@@ -1,13 +1,10 @@
 import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
-
 public class MemberView extends JFrame{
     private User user;
 
-    public MemberView() {
+    public MemberView(User user) {
         super("UrHealth App");
-        this.user = new User(1); //test user
+        this.user = user;
 
         //create the JMenuBar, JMenu and JMenu Items
         JMenuBar menuBar = new JMenuBar();
@@ -61,14 +58,20 @@ public class MemberView extends JFrame{
         groupBrowse.setActionCommand("groupBrowse");
         groupBrowse.addActionListener(control);
 
-
+        //Set up the dashboard which is the first thing user sees
+        //setUpDashboard();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600,600);
         this.setVisible(true);
     }
 
-    public static void main(String[] args) {new MemberView();}
+    private void setUpDashboard(){
+        //Display exercise routines, fitness achievements, health statistics
+        //For now, these cannot be updated except manually through DB
+    }
+
+    public static void main(String[] args) {new MemberView(new User(10));}
 }
 
 

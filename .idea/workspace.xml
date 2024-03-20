@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Initial Commit (empty classes)">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="GUI Menu Setup (Member View)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/AdminStaff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Trainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MemberView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MemberView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TrainerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TrainerView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,11 +49,26 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Admin/Desktop/Third Year/Fall2023/SYSC3110/LABS/Lab 1/SYSC3110_LAB_3",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="MemberView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MemberView" />
+      <module name="UrHealthApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MemberView" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -68,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710550539791</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="GUI Menu Setup (Member View)">
+      <created>1710552168876</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710552168876</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -84,6 +108,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit (empty classes)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit (empty classes)" />
+    <MESSAGE value="GUI Menu Setup (Member View)" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI Menu Setup (Member View)" />
   </component>
 </project>
