@@ -1,12 +1,20 @@
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 
 public class TrainerView extends JFrame{
     private User user;
-
+    private JList<String> listView;
+    private JScrollPane listPane;
+    private JPanel homePanel;
     public TrainerView(User user) {
         super("UrHealth App");
         this.user = user;
+
+        //create listView ScrollPane
+        listPane =new JScrollPane(listView);
+        //this.add(listPane, BorderLayout.CENTER);
+        listPane.setVisible(false);
 
         //create the JMenuBar, JMenu and JMenu Items
         JMenuBar menuBar = new JMenuBar();
@@ -14,14 +22,12 @@ public class TrainerView extends JFrame{
         JMenu profileMenu = new JMenu("Profile");
         JMenu scheduleMenu = new JMenu("My Schedule");
         JMenu searchMenu = new JMenu("Search");
-        JMenuItem dashboard = new JMenuItem("Dashboard");
         JMenuItem myInfo = new JMenuItem("My Info");
         JMenuItem addSessions = new JMenuItem("Add Session");
         JMenuItem mySessions = new JMenuItem("My Sessions");
         JMenuItem search = new JMenuItem("Search Member");
 
         //add menu items to menus
-        homeMenu.add(dashboard);
         profileMenu.add(myInfo);
         scheduleMenu.add(addSessions);
         scheduleMenu.add(mySessions);
@@ -37,8 +43,8 @@ public class TrainerView extends JFrame{
 
         //listen for menu selections
         Controller control = new Controller(user, this);
-        dashboard.setActionCommand("dashboard");
-        dashboard.addActionListener(control);
+        homeMenu.setActionCommand("home");
+        homeMenu.addActionListener(control);
         myInfo.setActionCommand("myInfo");
         myInfo.addActionListener(control);
         addSessions.setActionCommand("addSession");
@@ -48,18 +54,18 @@ public class TrainerView extends JFrame{
         search.setActionCommand("search");
         search.addActionListener(control);
 
-        //Set up the dashboard which is the first thing user sees
-        //setUpDashboard();
+        //Set up home screen which is the first thing user sees
+        //setUpHomeScreen();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600,600);
         this.setVisible(true);
     }
 
-    private void setUpDashboard(){
-        //trainer dashboard only contains logo and welcome msg
-
+    private void setUpHomeScreen(){
+        //trainer home screen only contains logo and welcome msgs
+        homePanel = new JPanel(new BorderLayout());
     }
 
-    public static void main(String[] args) {new MemberView(new User(10));}
+    public static void main(String[] args) {new MemberView(new User());}
 }

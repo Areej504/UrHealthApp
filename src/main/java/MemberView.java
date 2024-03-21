@@ -1,10 +1,18 @@
 import javax.swing.*;
 public class MemberView extends JFrame{
     private User user;
+    private JList<String> listView;
+    private JScrollPane listPane;
+    private JPanel homePanel;
 
     public MemberView(User user) {
         super("UrHealth App");
         this.user = user;
+
+        //create listView ScrollPane
+        listPane =new JScrollPane(listView);
+        //this.add(listPane, BorderLayout.CENTER);
+        listPane.setVisible(false);
 
         //create the JMenuBar, JMenu and JMenu Items
         JMenuBar menuBar = new JMenuBar();
@@ -69,9 +77,10 @@ public class MemberView extends JFrame{
     private void setUpDashboard(){
         //Display exercise routines, fitness achievements, health statistics
         //For now, these cannot be updated except manually through DB
+
     }
 
-    public static void main(String[] args) {new MemberView(new User(10));}
+    public static void main(String[] args) {new MemberView(new User());}
 }
 
 
