@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.*;
+
 public class MemberView extends JFrame{
     private User user;
     private JList<String> listView;
@@ -9,10 +11,12 @@ public class MemberView extends JFrame{
         super("UrHealth App");
         this.user = user;
 
-        //create listView ScrollPane
-        listPane =new JScrollPane(listView);
-        //this.add(listPane, BorderLayout.CENTER);
-        listPane.setVisible(false);
+//        //create and add the JList to the frame
+//        listView = new JList<String>(user);
+//        listPane =new JScrollPane(listView);
+//        this.add(listPane, BorderLayout.CENTER);
+//        listPane.setVisible(true);
+        homePanel = new JPanel();
 
         //create the JMenuBar, JMenu and JMenu Items
         JMenuBar menuBar = new JMenuBar();
@@ -67,7 +71,7 @@ public class MemberView extends JFrame{
         groupBrowse.addActionListener(control);
 
         //Set up the dashboard which is the first thing user sees
-        //setUpDashboard();
+        setUpDashboard();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600,600);
@@ -76,8 +80,60 @@ public class MemberView extends JFrame{
 
     private void setUpDashboard(){
         //Display exercise routines, fitness achievements, health statistics
-        //For now, these cannot be updated except manually through DB
+        // Set panel layout
+        homePanel.setLayout(new BorderLayout());
 
+        // Create logo panel
+        JPanel logoPanel = new JPanel();
+        ImageIcon logoIcon = new ImageIcon("logo.PNG"); ///path to logo image
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoPanel.add(logoLabel);
+        homePanel.add(logoPanel, BorderLayout.NORTH);
+
+        // Create main content panel
+        JPanel contentPanel = new JPanel(new GridLayout(4, 1, 10, 10)); // 3 rows, 1 column, with 10px padding
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding around content
+
+        // Add exercise routines
+        JLabel exerciseLabel = new JLabel("Exercise Routines");
+        exerciseLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        contentPanel.add(exerciseLabel);
+        //TODO: Get this info from the DB connection through model
+        JTextArea exerciseTextArea = new JTextArea("Exercise routine 1\nExercise routine 2\nExercise routine 3");
+        exerciseTextArea.setEditable(false);
+        exerciseTextArea.setLineWrap(true);
+        exerciseTextArea.setWrapStyleWord(true);
+        JScrollPane exerciseScrollPane = new JScrollPane(exerciseTextArea);
+        contentPanel.add(exerciseScrollPane);
+
+        // Add fitness achievements
+        JLabel achievementsLabel = new JLabel("Fitness Achievements");
+        achievementsLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        contentPanel.add(achievementsLabel);
+        //TODO: Get this info from the DB connection through model
+        JTextArea achievementsTextArea = new JTextArea("Achievement 1\nAchievement 2\nAchievement 3");
+        achievementsTextArea.setEditable(false);
+        achievementsTextArea.setLineWrap(true);
+        achievementsTextArea.setWrapStyleWord(true);
+        JScrollPane achievementsScrollPane = new JScrollPane(achievementsTextArea);
+        contentPanel.add(achievementsScrollPane);
+
+        // Add health statistics
+        JLabel statisticsLabel = new JLabel("Health Statistics");
+        statisticsLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        contentPanel.add(statisticsLabel);
+        //TODO: Get this info from the DB connection through model
+        JTextArea statisticsTextArea = new JTextArea("Statistic 1: Value\nStatistic 2: Value\nStatistic 3: Value");
+        statisticsTextArea.setEditable(false);
+        statisticsTextArea.setLineWrap(true);
+        statisticsTextArea.setWrapStyleWord(true);
+        JScrollPane statisticsScrollPane = new JScrollPane(statisticsTextArea);
+        contentPanel.add(statisticsScrollPane);
+
+        // Add content panel to main panel
+        homePanel.add(contentPanel, BorderLayout.CENTER);
+        this.add(homePanel);
+        homePanel.setVisible(true);
     }
 
     public static void main(String[] args) {new MemberView(new User());}
