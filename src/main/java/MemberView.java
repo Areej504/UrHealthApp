@@ -2,20 +2,21 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MemberView extends JFrame{
-    private User user;
+    private Member user;
     private JList<String> listView;
     private JScrollPane listPane;
     private JPanel homePanel;
 
-    public MemberView(User user) {
+    public MemberView(Member user) {
         super("UrHealth App");
         this.user = user;
 
-//        //create and add the JList to the frame
-//        listView = new JList<String>(user);
-//        listPane =new JScrollPane(listView);
-//        this.add(listPane, BorderLayout.CENTER);
-//        listPane.setVisible(true);
+        //create and add the JList to the frame
+        listView = new JList<String>(user);
+        listPane =new JScrollPane(listView);
+        this.add(listPane, BorderLayout.CENTER);
+        listPane.setVisible(false);
+
         homePanel = new JPanel();
 
         //create the JMenuBar, JMenu and JMenu Items
@@ -52,7 +53,7 @@ public class MemberView extends JFrame{
         this.setJMenuBar(menuBar);
 
         //listen for menu selections
-        Controller control = new Controller(user, this);
+        MemberController control = new MemberController(user, this);
         dashboard.setActionCommand("dashboard");
         dashboard.addActionListener(control);
         myInfo.setActionCommand("myInfo");
@@ -77,9 +78,20 @@ public class MemberView extends JFrame{
         this.setSize(600,600);
         this.setVisible(true);
     }
+    //display the list pane to view user data
+    public void displayListView(){
+        homePanel.setVisible(false);
+        listPane.setVisible(true);
+    }
+    //display the list pane to view user data
+    public void displayDashboard(){
+        listPane.setVisible(false);
+        homePanel.setVisible(true);
+    }
 
+    //Set up dashboard design and feel
+    // Display exercise routines, fitness achievements, health statistics
     private void setUpDashboard(){
-        //Display exercise routines, fitness achievements, health statistics
         // Set panel layout
         homePanel.setLayout(new BorderLayout());
 
@@ -136,8 +148,6 @@ public class MemberView extends JFrame{
         this.add(homePanel);
         homePanel.setVisible(true);
     }
-
-    public static void main(String[] args) {new MemberView(new User());}
 }
 
 

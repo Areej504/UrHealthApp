@@ -20,15 +20,15 @@ public class LoginUI {
         //create panel with buttons to select user type.
         String users[] = {"Member", "Trainer", "Admin Staff"};
         int selection = JOptionPane.showOptionDialog(null,
-                "I am a: ", "Welcome to UrHealth App!",
+                "Choose your login portal: ", "Welcome to UrHealth App!",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
                 null,
                 users, users[0]);
         //set the selected view for the app based on user type
         if(selection==0){
-            selectedView = UserViews.Member;
+            selectedView = UserViews.Members;
         }else if(selection==1){
-            selectedView = UserViews.Trainer;
+            selectedView = UserViews.Trainers;
         }else{
             selectedView = UserViews.Admin_Staff;
         }

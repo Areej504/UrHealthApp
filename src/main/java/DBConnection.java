@@ -18,29 +18,25 @@ public class DBConnection {
 
                 //Launch the GUI
                 LoginUI ui = new LoginUI(conn);
-                User currUser;
 
                 //construct user and launch appropriate user view
-                if(ui.getSelectedView()==UserViews.Member){
-                    currUser = new Member(ui.getUserEmail(), conn);
+                if(ui.getSelectedView()==UserViews.Members){
+                    Member currUser = new Member(ui.getUserEmail(), conn);
                     new MemberView(currUser);
-                } else if (ui.getSelectedView()==UserViews.Trainer) {
-                    currUser = new Trainer(ui.getUserEmail(), conn);
+                } else if (ui.getSelectedView()==UserViews.Trainers) {
+                    Trainer currUser = new Trainer(ui.getUserEmail(), conn);
                     new TrainerView(currUser);
                 }else if(ui.getSelectedView()==UserViews.Admin_Staff){
-                    currUser= new AdminStaff(ui.getUserEmail(), conn);
+                    AdminStaff currUser= new AdminStaff(ui.getUserEmail(), conn);
                     new AdminView(currUser);
                 }
 
             } else {
                 System.out.println("Failed to establish connection.");
             }
-            //Close the connection
-            conn.close();
         }
         catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
     }
 }

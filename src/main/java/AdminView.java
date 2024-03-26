@@ -1,11 +1,11 @@
 import javax.swing.*;
 
 public class AdminView extends JFrame{
-    private User user;
+    private AdminStaff user;
     private JList<String> listView;
     private JScrollPane listPane;
     private JPanel homePanel;
-    public AdminView(User user) {
+    public AdminView(AdminStaff user) {
         super("UrHealth App");
         this.user = user;
 
@@ -30,7 +30,7 @@ public class AdminView extends JFrame{
         this.setJMenuBar(menuBar);
 
         //listen for menu selections
-        Controller control = new Controller(user, this);
+        AdminController control = new AdminController(user, this);
         homeMenu.setActionCommand("home");
         homeMenu.addActionListener(control);
         roomsMenu.setActionCommand("rooms");
@@ -52,6 +52,4 @@ public class AdminView extends JFrame{
         //Admin home screen only contains logo and welcome msg
 
     }
-
-    public static void main(String[] args) {new MemberView(new User());}
 }

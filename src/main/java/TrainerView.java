@@ -1,13 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Connection;
 
 public class TrainerView extends JFrame{
-    private User user;
+    private Trainer user;
     private JList<String> listView;
     private JScrollPane listPane;
     private JPanel homePanel;
-    public TrainerView(User user) {
+    public TrainerView(Trainer user) {
         super("UrHealth App");
         this.user = user;
 
@@ -42,7 +41,7 @@ public class TrainerView extends JFrame{
         this.setJMenuBar(menuBar);
 
         //listen for menu selections
-        Controller control = new Controller(user, this);
+        TrainerController control = new TrainerController(user, this);
         homeMenu.setActionCommand("home");
         homeMenu.addActionListener(control);
         myInfo.setActionCommand("myInfo");
@@ -66,6 +65,4 @@ public class TrainerView extends JFrame{
         //trainer home screen only contains logo and welcome msgs
         homePanel = new JPanel(new BorderLayout());
     }
-
-    public static void main(String[] args) {new MemberView(new User());}
 }
