@@ -130,6 +130,7 @@ public class MemberView extends JFrame{
         JScrollPane statisticsScrollPane = new JScrollPane(statisticsTextArea);
         contentPanel.add(statisticsScrollPane);
 
+        contentPanel.setBackground(Color.orange); // Set background color to orange
         // Add content panel to main panel
         homePanel.add(contentPanel, BorderLayout.CENTER);
         this.add(homePanel);

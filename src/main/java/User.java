@@ -2,11 +2,13 @@ import javax.swing.*;
 import java.sql.Connection;
 
 public class User extends DefaultListModel {
-    public int userID; //the unique user id
+    public String email; //the unique user id
     public Connection conn; //postgreSQL connection
 
-    public User() {
+    public User(String email, Connection conn) {
         super();
+        this.email = email;
+        this.conn = conn;
     }
 
     /**

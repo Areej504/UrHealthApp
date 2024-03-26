@@ -1,5 +1,8 @@
 import javax.swing.*;
-import java.util.concurrent.CancellationException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /** This class initializes the login view for UrHealth App and prompts
  * user for email address to retrieve user profile.
@@ -9,7 +12,11 @@ import java.util.concurrent.CancellationException;
 public class LoginUI {
     private String userEmail;
     private UserViews selectedView;
-    public LoginUI(){
+    private Connection conn; //DB connection for email authentication
+    public LoginUI(Connection conn){
+        //set connection
+        this.conn = conn;
+
         //create panel with buttons to select user type.
         String users[] = {"Member", "Trainer", "Admin Staff"};
         int selection = JOptionPane.showOptionDialog(null,
@@ -38,7 +45,7 @@ public class LoginUI {
             int result = JOptionPane.showConfirmDialog(null, panel,"User Login",
                     JOptionPane.OK_CANCEL_OPTION);
 
-            //when OK clicked, check input is not empty
+            //when OK clicked, check input is not empty, and email exists
             if (result==JOptionPane.OK_OPTION) {
                 String email = txt.getText();
                 //if email field is empty, show error message
@@ -46,7 +53,11 @@ public class LoginUI {
                     JOptionPane.showMessageDialog(null, "Please enter a an email address!",
                             "Invalid Input", JOptionPane.ERROR_MESSAGE);
                     validInput = false;
-                } else {
+                } else if(!authenticateEmail(email)){
+                    JOptionPane.showMessageDialog(null, "User not found! Enter a registered email address",
+                            "Invalid Input", JOptionPane.ERROR_MESSAGE);
+                    validInput = false;
+                }else {
                     userEmail = email; //set the user Email
                     validInput = true;
                 }
@@ -56,7 +67,31 @@ public class LoginUI {
             }
         }
     }
-
+    /**
+     * Authenticate the email provided by user through the DB connection.
+     */
+    private boolean authenticateEmail(String email) {
+        boolean exists = false; //set default to false
+        try {
+            // Create statement & query to check if email exists in selected view table
+            Statement stmt = conn.createStatement(); // Create SQL query
+            String SQL = "SELECT EXISTS (\n" +
+                    "    SELECT 1\n" +
+                    "    FROM "+getSelectedView()+"\n" +
+                    "    WHERE email = '" + email + "'\n" +
+                    ");\n";
+            ResultSet rs = stmt.executeQuery(SQL); // Process the result set
+            while (rs.next()) {
+                exists = rs.getBoolean("exists");
+                }
+            // Close resources
+            rs.close();
+            stmt.close();
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+        return exists;
+    }
     /**
      * @return the email entered by the user
      */
@@ -69,9 +104,5 @@ public class LoginUI {
      */
     public UserViews getSelectedView() {
         return selectedView;
-    }
-
-    public static void main(String[] args) {
-        new LoginUI();
     }
 }

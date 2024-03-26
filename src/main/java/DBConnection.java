@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 public class DBConnection {
     public static void main(String[] args){
-        String url = "jdbc:postgresql://localhost:5432/URHealthApp";
+        String url = "jdbc:postgresql://localhost:5432/UrHealthApp";
         String user = "postgres";
         String password = "24AreejSQL";
         try {
@@ -17,18 +17,18 @@ public class DBConnection {
                 DBConnection dbmsConn = new DBConnection();
 
                 //Launch the GUI
-                LoginUI ui = new LoginUI();
+                LoginUI ui = new LoginUI(conn);
                 User currUser;
 
                 //construct user and launch appropriate user view
                 if(ui.getSelectedView()==UserViews.Member){
-                    currUser = new Member();
+                    currUser = new Member(ui.getUserEmail(), conn);
                     new MemberView(currUser);
                 } else if (ui.getSelectedView()==UserViews.Trainer) {
-                    currUser = new Trainer();
+                    currUser = new Trainer(ui.getUserEmail(), conn);
                     new TrainerView(currUser);
                 }else if(ui.getSelectedView()==UserViews.Admin_Staff){
-                    currUser= new AdminStaff();
+                    currUser= new AdminStaff(ui.getUserEmail(), conn);
                     new AdminView(currUser);
                 }
 
