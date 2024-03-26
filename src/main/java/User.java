@@ -14,13 +14,6 @@ public class User extends DefaultListModel {
         this.conn = conn;
     }
 
-    /**
-     * set up a connection with postgreSQL for this user
-     * */
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
-
     public void getPersonalInfo() throws SQLException {
         this.clear(); //clear list to retrieve new info and display it
 
@@ -33,10 +26,13 @@ public class User extends DefaultListModel {
         while(rs.next()){
             String email = rs.getString("email");
             addElement(email);
+            System.out.println(getElementAt(0));
             String firstName = rs.getString("first_name");
             addElement(firstName);
+            System.out.println(getElementAt(1));
             String lastName = rs.getString("last_name");
             addElement(lastName);
+            System.out.println(getElementAt(2));
         }
         // Close resources
         rs.close();

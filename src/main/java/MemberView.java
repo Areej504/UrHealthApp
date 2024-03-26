@@ -4,18 +4,17 @@ import java.awt.*;
 public class MemberView extends JFrame{
     private Member user;
     private JList<String> listView;
-    private JScrollPane listPane;
-    private JPanel homePanel;
+    private JScrollPane listScrollPane;
+    private JPanel homePanel ;
 
     public MemberView(Member user) {
         super("UrHealth App");
         this.user = user;
 
         //create and add the JList to the frame
-        listView = new JList<String>(user);
-        listPane =new JScrollPane(listView);
-        this.add(listPane, BorderLayout.CENTER);
-        listPane.setVisible(false);
+        listView = new JList<>(user);
+        listScrollPane =new JScrollPane(listView);
+        this.add(listScrollPane, BorderLayout.CENTER);
 
         homePanel = new JPanel();
 
@@ -81,12 +80,16 @@ public class MemberView extends JFrame{
     //display the list pane to view user data
     public void displayListView(){
         homePanel.setVisible(false);
-        listPane.setVisible(true);
+        this.add(listScrollPane, BorderLayout.CENTER);
+        listScrollPane.setVisible(true);
+        System.out.println("listview");
     }
     //display the list pane to view user data
     public void displayDashboard(){
-        listPane.setVisible(false);
+        listScrollPane.setVisible(false);
+        this.add(homePanel);
         homePanel.setVisible(true);
+        System.out.println("dashboard");
     }
 
     //Set up dashboard design and feel
