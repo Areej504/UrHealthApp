@@ -61,7 +61,7 @@ public class MemberView extends JFrame{
         metrics.addActionListener(control);
         goals.setActionCommand("goals");
         goals.addActionListener(control);
-        personalBooking.setActionCommand(" personalBooking");
+        personalBooking.setActionCommand("personalBooking");
         personalBooking.addActionListener(control);
         groupBooking.setActionCommand("groupBooking");
         groupBooking.addActionListener(control);
