@@ -16,5 +16,33 @@ public class TrainerController implements ActionListener {
         //action commands for when a Menu/MenuItem is pressed
         //call model class functions to retrieve data
         String command = e.getActionCommand();
+        try {
+            switch (command) {
+                case "dashboard":
+                    view.displayDashboard();
+                    break;
+                case "myInfo":
+                    view.displayListView();
+                    model.getPersonalInfo();
+                    break;
+                case "addSession":
+                    view.displayListView();
+                    model.addSession();
+                    break;
+                case "mySessions":
+                    view.displayListView();
+                    model.getSessions();
+                    break;
+                case "search":
+                    view.displayListView();
+                    model.searchMember();
+                    break;
+                default:
+                    System.out.println("Unknown Cmd");// Handle unknown command
+                    break;
+            }
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
     }
 }

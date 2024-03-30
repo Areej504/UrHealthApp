@@ -23,7 +23,7 @@ public class DBConnection {
                 if(ui.getSelectedView()==UserViews.Members){
                     Member currUser = new Member(ui.getUserEmail(), conn);
                     new MemberView(currUser);
-                } else if (ui.getSelectedView()==UserViews.Trainers) {
+                } else if (ui.getSelectedView()==UserViews.Trainer) {
                     Trainer currUser = new Trainer(ui.getUserEmail(), conn);
                     new TrainerView(currUser);
                 }else if(ui.getSelectedView()==UserViews.Admin_Staff){

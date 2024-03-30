@@ -28,7 +28,7 @@ public class LoginUI {
         if(selection==0){
             selectedView = UserViews.Members;
         }else if(selection==1){
-            selectedView = UserViews.Trainers;
+            selectedView = UserViews.Trainer;
         }else{
             selectedView = UserViews.Admin_Staff;
         }

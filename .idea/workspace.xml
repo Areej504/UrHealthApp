@@ -6,8 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Member class: some get() functions implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MemberView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MemberView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AdminStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminStaff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Trainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TrainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TrainerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TrainerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserViews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserViews.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

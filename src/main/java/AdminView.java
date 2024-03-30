@@ -1,38 +1,45 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class AdminView extends JFrame{
     private AdminStaff user;
     private JList<String> listView;
-    private JScrollPane listPane;
+    private JScrollPane listScrollPane;
     private JPanel homePanel;
     public AdminView(AdminStaff user) {
         super("UrHealth App");
         this.user = user;
 
-        //create listView ScrollPane
-        listPane =new JScrollPane(listView);
-        //this.add(listPane, BorderLayout.CENTER);
-        listPane.setVisible(false);
+        //create and add the JList to the frame
+        listView = new JList<>(user);
+        listScrollPane =new JScrollPane(listView);
+        this.add(listScrollPane, BorderLayout.CENTER);
+
+        homePanel = new JPanel();
 
         //create the JMenuBar, JMenu and JMenu Items
         JMenuBar menuBar = new JMenuBar();
         JMenu homeMenu = new JMenu("Home");
-        JMenu roomsMenu = new JMenu("Rooms");
-        JMenu equipMenu = new JMenu("Equipment");
-        JMenu billingMenu = new JMenu("Billings");
+        JMenuItem dashboard = new JMenuItem("Dashboard");
+        JMenu manageMenu = new JMenu("Manage");
+        JMenuItem roomsMenu = new JMenuItem("Rooms");
+        JMenuItem equipMenu = new JMenuItem("Equipment");
+        JMenuItem billingMenu = new JMenuItem("Billings");
 
         //add menus to menu bar
+        homeMenu.add(dashboard);
         menuBar.add(homeMenu);
-        menuBar.add(roomsMenu);
-        menuBar.add(equipMenu);
-        menuBar.add(billingMenu);
+        manageMenu.add(roomsMenu);
+        manageMenu.add(equipMenu);
+        manageMenu.add(billingMenu);
+        menuBar.add(manageMenu);
         // adds menu bar to the frame
         this.setJMenuBar(menuBar);
 
         //listen for menu selections
         AdminController control = new AdminController(user, this);
-        homeMenu.setActionCommand("home");
-        homeMenu.addActionListener(control);
+        dashboard.setActionCommand("dashboard");
+        dashboard.addActionListener(control);
         roomsMenu.setActionCommand("rooms");
         roomsMenu.addActionListener(control);
         equipMenu.setActionCommand("equip");
@@ -41,15 +48,40 @@ public class AdminView extends JFrame{
         billingMenu.addActionListener(control);
 
         //Set up the home screen which is the first thing user sees
-        //setUpHomeScreen()
+        setUpHomeScreen();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600,600);
         this.setVisible(true);
     }
 
-    private void setUpHomeScreen(){
-        //Admin home screen only contains logo and welcome msg
+    //display the list pane to view user data
+    public void displayListView(){
+        homePanel.setVisible(false);
+        this.add(listScrollPane, BorderLayout.CENTER);
+        listScrollPane.setVisible(true);
+    }
+    //display the list pane to view user data
+    public void displayDashboard(){
+        listScrollPane.setVisible(false);
+        this.add(homePanel);
+        homePanel.setVisible(true);
+    }
 
+
+    private void setUpHomeScreen(){
+        // Set panel layout
+        homePanel.setLayout(new BorderLayout());
+
+        // Create logo panel
+        JPanel logoPanel = new JPanel();
+        ImageIcon logoIcon = new ImageIcon("logo.PNG"); ///path to logo image
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoPanel.add(logoLabel);
+        homePanel.add(logoPanel, BorderLayout.NORTH);
+
+        this.setBackground(Color.orange); // Set background color to orange
+        this.add(homePanel);
+        homePanel.setVisible(true);
     }
 }

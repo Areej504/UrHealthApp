@@ -4,20 +4,23 @@ import java.awt.*;
 public class TrainerView extends JFrame{
     private Trainer user;
     private JList<String> listView;
-    private JScrollPane listPane;
+    private JScrollPane listScrollPane;
     private JPanel homePanel;
     public TrainerView(Trainer user) {
         super("UrHealth App");
         this.user = user;
 
-        //create listView ScrollPane
-        listPane =new JScrollPane(listView);
-        //this.add(listPane, BorderLayout.CENTER);
-        listPane.setVisible(false);
+        //create and add the JList to the frame
+        listView = new JList<>(user);
+        listScrollPane =new JScrollPane(listView);
+        this.add(listScrollPane, BorderLayout.CENTER);
+
+        homePanel = new JPanel();
 
         //create the JMenuBar, JMenu and JMenu Items
         JMenuBar menuBar = new JMenuBar();
         JMenu homeMenu = new JMenu("Home");
+        JMenuItem dashboard = new JMenuItem("Dashboard");
         JMenu profileMenu = new JMenu("Profile");
         JMenu scheduleMenu = new JMenu("My Schedule");
         JMenu searchMenu = new JMenu("Search");
@@ -27,10 +30,11 @@ public class TrainerView extends JFrame{
         JMenuItem search = new JMenuItem("Search Member");
 
         //add menu items to menus
+        homeMenu.add(dashboard);
         profileMenu.add(myInfo);
         scheduleMenu.add(addSessions);
         scheduleMenu.add(mySessions);
-        searchMenu.add(searchMenu);
+        searchMenu.add(search);
 
         //add menus to menu bar
         menuBar.add(homeMenu);
@@ -42,8 +46,8 @@ public class TrainerView extends JFrame{
 
         //listen for menu selections
         TrainerController control = new TrainerController(user, this);
-        homeMenu.setActionCommand("home");
-        homeMenu.addActionListener(control);
+        dashboard.setActionCommand("dashboard");
+        dashboard.addActionListener(control);
         myInfo.setActionCommand("myInfo");
         myInfo.addActionListener(control);
         addSessions.setActionCommand("addSession");
@@ -54,15 +58,39 @@ public class TrainerView extends JFrame{
         search.addActionListener(control);
 
         //Set up home screen which is the first thing user sees
-        //setUpHomeScreen();
+        setUpHomeScreen();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600,600);
         this.setVisible(true);
     }
+    //display the list pane to view user data
+    public void displayListView(){
+        homePanel.setVisible(false);
+        this.add(listScrollPane, BorderLayout.CENTER);
+        listScrollPane.setVisible(true);
+    }
+    //display the list pane to view user data
+    public void displayDashboard(){
+        listScrollPane.setVisible(false);
+        this.add(homePanel);
+        homePanel.setVisible(true);
+    }
 
     private void setUpHomeScreen(){
         //trainer home screen only contains logo and welcome msgs
-        homePanel = new JPanel(new BorderLayout());
+        // Set panel layout
+        homePanel.setLayout(new BorderLayout());
+
+        // Create logo panel
+        JPanel logoPanel = new JPanel();
+        ImageIcon logoIcon = new ImageIcon("logo.PNG"); ///path to logo image
+        JLabel logoLabel = new JLabel(logoIcon);
+        logoPanel.add(logoLabel);
+        homePanel.add(logoPanel, BorderLayout.NORTH);
+
+        this.setBackground(Color.orange); // Set background color to orange
+        this.add(homePanel);
+        homePanel.setVisible(true);
     }
 }

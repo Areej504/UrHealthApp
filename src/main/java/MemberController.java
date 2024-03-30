@@ -17,30 +17,42 @@ public class MemberController implements ActionListener {
         //call model class functions to retrieve data
         String command = e.getActionCommand();
         try {
-            if (command.equals("dashboard")) {
-                model.updateDashboard();
-                view.displayDashboard();
-            } else if (command.equals("myInfo")) {
-                view.displayListView();
-                model.getPersonalInfo();
-            } else if (command.equals("metrics")) {
-                view.displayListView();
-                model.getHealthMetrics();
-            } else if (command.equals("goals")) {
-                view.displayListView();
-                model.getFitnessGoals();
-            } else if (command.equals("personalBooking")) {
-                view.displayListView();
-                model.getPersonalBookings();
-            } else if (command.equals("groupBooking")) {
-                view.displayListView();
-                model.getGroupBookings();
-            } else if (command.equals("personalBrowse")) {
-                view.displayListView();
-                model.getAvailableSessions();
-            } else if (command.equals("groupBrowse")) {
-                view.displayListView();
-                model.getAvailableClasses();
+            switch (command) {
+                case "dashboard":
+                    model.updateDashboard();
+                    view.displayDashboard();
+                    break;
+                case "myInfo":
+                    view.displayListView();
+                    model.getPersonalInfo();
+                    break;
+                case "metrics":
+                    view.displayListView();
+                    model.getHealthMetrics();
+                    break;
+                case "goals":
+                    view.displayListView();
+                    model.getFitnessGoals();
+                    break;
+                case "personalBooking":
+                    view.displayListView();
+                    model.getPersonalBookings();
+                    break;
+                case "groupBooking":
+                    view.displayListView();
+                    model.getGroupBookings();
+                    break;
+                case "personalBrowse":
+                    view.displayListView();
+                    model.getAvailableSessions();
+                    break;
+                case "groupBrowse":
+                    view.displayListView();
+                    model.getAvailableClasses();
+                    break;
+                default:
+                    System.out.println("Unknown Cmd");// Handle unknown command
+                    break;
             }
         }catch(SQLException se){
             se.printStackTrace();
