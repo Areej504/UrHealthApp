@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Admin View, controller and functions setup + Trainer View and Controller setup">
-      <change afterPath="$PROJECT_DIR$/SQL/DDL.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SQL/DML.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design_diagrams/DB_schema.drawio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design_diagrams/ER_Model.drawio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop.ini" afterDir="false" />
+    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Trainer functions and lots of refactoring + folders for diagrams and SQL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MemberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Trainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TrainerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TrainerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TrainerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1711767476629</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Trainer functions and lots of refactoring + folders for diagrams and SQL">
+      <created>1712009122532</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712009122532</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -193,6 +192,7 @@
     <MESSAGE value="controller set up and personal info retrieval" />
     <MESSAGE value="Member class: some get() functions implemented" />
     <MESSAGE value="Admin View, controller and functions setup + Trainer View and Controller setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Admin View, controller and functions setup + Trainer View and Controller setup" />
+    <MESSAGE value="Trainer functions and lots of refactoring + folders for diagrams and SQL" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trainer functions and lots of refactoring + folders for diagrams and SQL" />
   </component>
 </project>

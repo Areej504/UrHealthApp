@@ -26,15 +26,19 @@ public class TrainerView extends JFrame{
         JMenu scheduleMenu = new JMenu("My Schedule");
         JMenu searchMenu = new JMenu("Search");
         JMenuItem myInfo = new JMenuItem("My Info");
-        JMenuItem addSessions = new JMenuItem("Add Session");
-        JMenuItem mySessions = new JMenuItem("My Sessions");
+        JMenuItem addSession = new JMenuItem("Add Personal Session");
+        JMenuItem bookedSessions = new JMenuItem("Booked Sessions");
+        JMenuItem addClass = new JMenuItem("Add Group Class");
+        JMenuItem bookedClasses = new JMenuItem("Booked Classes");
         JMenuItem search = new JMenuItem("Search Member");
 
         //add menu items to menus
         homeMenu.add(dashboard);
         profileMenu.add(myInfo);
-        scheduleMenu.add(addSessions);
-        scheduleMenu.add(mySessions);
+        scheduleMenu.add(addSession);
+        scheduleMenu.add(bookedSessions);
+        scheduleMenu.add(addClass);
+        scheduleMenu.add(bookedClasses);
         searchMenu.add(search);
 
         //add menus to menu bar
@@ -51,10 +55,14 @@ public class TrainerView extends JFrame{
         dashboard.addActionListener(control);
         myInfo.setActionCommand("myInfo");
         myInfo.addActionListener(control);
-        addSessions.setActionCommand("addSession");
-        addSessions.addActionListener(control);
-        mySessions.setActionCommand("mySessions");
-        mySessions.addActionListener(control);
+        addSession.setActionCommand("addSession");
+        addSession.addActionListener(control);
+        bookedSessions.setActionCommand("bookedSessions");
+        bookedSessions.addActionListener(control);
+        addClass.setActionCommand("addClass");
+        addClass.addActionListener(control);
+        bookedClasses.setActionCommand("bookedClasses");
+        bookedClasses.addActionListener(control);
         search.setActionCommand("search");
         search.addActionListener(control);
 
@@ -113,7 +121,7 @@ public class TrainerView extends JFrame{
 
         //display JOptionPane and prompt user for input
         int result = JOptionPane.showConfirmDialog(this, myPanel,
-                "Please Enter Buddy Info", JOptionPane.OK_CANCEL_OPTION);
+                "Please enter details", JOptionPane.OK_CANCEL_OPTION);
 
         //retrieve and store user input to return
         ArrayList<String> inputList = new ArrayList<>();

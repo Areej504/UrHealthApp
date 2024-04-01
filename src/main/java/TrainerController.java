@@ -28,12 +28,21 @@ public class TrainerController implements ActionListener {
                     break;
                 case "addSession":
                     view.displayListView();
-                    ArrayList<String> l = view.getNewSessionInput();
-                    model.addSession(l.get(0), l.get(1), l.get(2));
+                    ArrayList<String> in = view.getNewSessionInput();
+                    model.addSession(in.get(0), in.get(1), in.get(2));
                     break;
-                case "mySessions":
+                case "bookedSessions":
                     view.displayListView();
                     model.getBookedSessions();
+                    break;
+                case "addClass":
+                    view.displayListView();
+                    ArrayList<String> l = view.getNewSessionInput();
+                    model.addClass(l.get(0), l.get(1), l.get(2));
+                    break;
+                case "bookedClasses":
+                    view.displayListView();
+                    model.getBookedClasses();
                     break;
                 case "search":
                     view.displayListView();
