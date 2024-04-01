@@ -9,7 +9,7 @@ public class Member extends User{
         super(email, conn);
     }
 
-    public void updateDashboard() {
+    public void loadDashboard() {
     }
 
     public void getHealthMetrics() throws SQLException{
@@ -81,7 +81,6 @@ public class Member extends User{
             addElement("room_id: "+room_id);
             String building = rs.getString("building");
             addElement("building: "+building);
-            System.out.println(getElementAt(1));
         }
         // Close resources
         rs.close();
@@ -174,5 +173,33 @@ public class Member extends User{
         // Close resources
         rs.close();
         stmt.close();
+
+    }
+
+    /**
+     * Compiles member profile attributes into a string to be displayed.
+     * @return A string of personal info, fitness goals and health metrics
+     */
+    public String getMemberProfile(){
+        StringBuilder sb = new StringBuilder("<html>");
+        try{
+            getPersonalInfo(); //retrieve personal info and add to listModel
+        }catch(SQLException e){e.printStackTrace();}
+        sb.append("--Personal Info--<br>\n");
+        sb.append(this); //append the personal info retrieved
+        try{
+            getFitnessGoals(); //retrieve fitness goals and add to listModel
+        }catch(SQLException e){e.printStackTrace();}
+        sb.append("\n<br>--Fitness Goals--<br>\n");
+        sb.append(this); //append the fitness goals retrieved
+        try{
+            getHealthMetrics(); //retrieve health metrics and add to listModel
+        }catch(SQLException e){e.printStackTrace();}
+        sb.append("\n<br>--Health Metrics--<br>\n");
+        sb.append(this); //append the health metrics retrieved
+        sb.append("</html>");
+
+        //return the string builder as a string
+        return sb.toString();
     }
 }

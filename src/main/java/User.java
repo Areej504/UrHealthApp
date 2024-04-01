@@ -19,19 +19,23 @@ public class User extends DefaultListModel {
 
         // Create statement
         Statement stmt = conn.createStatement(); // Execute SQL query
-        String SQL = "SELECT *\n" +
-                "FROM Members\n" +
-                "WHERE email = '" + email + "';";
+        String SQL = "SELECT *  FROM\n" +
+                "(SELECT * FROM Members \n" +
+                " UNION ALL \n" +
+                " SELECT * FROM Trainer \n" +
+                " UNION ALL \n" +
+                " SELECT * FROM Admin_Staff) AS all_users\n" +
+                " WHERE all_users.email = '"+email+"';";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
         while(rs.next()){
             String email = rs.getString("email");
-            addElement(email);
+            addElement("email: "+email);
             System.out.println(getElementAt(0));
             String firstName = rs.getString("first_name");
-            addElement(firstName);
+            addElement("first_name: "+firstName);
             System.out.println(getElementAt(1));
             String lastName = rs.getString("last_name");
-            addElement(lastName);
+            addElement("first_name: "+lastName);
             System.out.println(getElementAt(2));
         }
         // Close resources

@@ -1,6 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TrainerController implements ActionListener {
     private Trainer model; //the user function model
@@ -27,15 +28,17 @@ public class TrainerController implements ActionListener {
                     break;
                 case "addSession":
                     view.displayListView();
-                    model.addSession();
+                    ArrayList<String> l = view.getNewSessionInput();
+                    model.addSession(l.get(0), l.get(1), l.get(2));
                     break;
                 case "mySessions":
                     view.displayListView();
-                    model.getSessions();
+                    model.getBookedSessions();
                     break;
                 case "search":
                     view.displayListView();
-                    model.searchMember();
+                    String mem_email = view.getSearchInput();
+                    model.searchMember(mem_email);
                     break;
                 default:
                     System.out.println("Unknown Cmd");// Handle unknown command

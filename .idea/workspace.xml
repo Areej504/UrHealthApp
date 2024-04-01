@@ -4,18 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Member class: some get() functions implemented">
+    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Admin View, controller and functions setup + Trainer View and Controller setup">
+      <change afterPath="$PROJECT_DIR$/SQL/DDL.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SQL/DML.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design_diagrams/DB_schema.drawio" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design_diagrams/ER_Model.drawio" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AdminStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminStaff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MemberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Trainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TrainerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TrainerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TrainerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserViews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserViews.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1711487449638</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Admin View, controller and functions setup + Trainer View and Controller setup">
+      <created>1711767476629</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1711767476629</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,6 +192,7 @@
     <MESSAGE value="email authentication for 3 separate user views" />
     <MESSAGE value="controller set up and personal info retrieval" />
     <MESSAGE value="Member class: some get() functions implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Member class: some get() functions implemented" />
+    <MESSAGE value="Admin View, controller and functions setup + Trainer View and Controller setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin View, controller and functions setup + Trainer View and Controller setup" />
   </component>
 </project>

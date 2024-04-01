@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class TrainerView extends JFrame{
     private Trainer user;
@@ -92,5 +93,40 @@ public class TrainerView extends JFrame{
         this.setBackground(Color.orange); // Set background color to orange
         this.add(homePanel);
         homePanel.setVisible(true);
+    }
+
+    public ArrayList<String> getNewSessionInput() {
+        //create JTextFields to collect input
+        JTextField dateField = new JTextField("YYYY-MM-DD",10);
+        JTextField timeField = new JTextField("HH-MI",5);
+        JTextField roomField = new JTextField(2);
+
+        //add the input text fields and labels
+        JPanel myPanel = new JPanel();
+        myPanel.setLayout(new GridLayout(3,0));
+        myPanel.add(new JLabel("Date:"));
+        myPanel.add(dateField);
+        myPanel.add(new JLabel("Time:"));
+        myPanel.add(timeField);
+        myPanel.add(new JLabel("Room id:"));
+        myPanel.add(roomField);
+
+        //display JOptionPane and prompt user for input
+        int result = JOptionPane.showConfirmDialog(this, myPanel,
+                "Please Enter Buddy Info", JOptionPane.OK_CANCEL_OPTION);
+
+        //retrieve and store user input to return
+        ArrayList<String> inputList = new ArrayList<>();
+        if (result == JOptionPane.OK_OPTION) {
+            inputList.add(dateField.getText());
+            inputList.add(timeField.getText());
+            inputList.add(roomField.getText());
+        }
+        return inputList;
+    }
+
+    public String getSearchInput() {
+        String input=JOptionPane.showInputDialog(this,"Enter member email: ","Search Member Profiles", JOptionPane.QUESTION_MESSAGE);
+        return input;
     }
 }
