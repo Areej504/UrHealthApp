@@ -33,19 +33,22 @@ public class Trainer extends User{
                 "JOIN Rooms r ON ps.room_id = r.room_id\n"+
                 "WHERE ps.trainer_email = '"+email+"';";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
+        StringBuilder sb = new StringBuilder("<html>");
         while(rs.next()){
             String session_id = rs.getString("session_id");
-            addElement("session_id: "+session_id);
             String mem_email = rs.getString("mem_email");
-            addElement("mem_email: "+mem_email);
             String session_date = rs.getString("session_date");
-            addElement("session_date: "+session_date);
             String session_time = rs.getString("session_time");
-            addElement("session_time: "+session_time);
             String room_id = rs.getString("room_id");
-            addElement("room_id: "+room_id);
             String building = rs.getString("building");
-            addElement("building: "+building);
+            sb.append("session_id: "+session_id);
+            sb.append("<br>mem_email: "+mem_email);
+            sb.append("<br>session_date: "+session_date);
+            sb.append("<br>session_time: "+session_time);
+            sb.append("<br>room_id: "+room_id);
+            sb.append("<br>building: "+building);
+            sb.append("</html>");
+            addElement(sb.toString());
         }
         // Close resources
         rs.close();
@@ -79,17 +82,20 @@ public class Trainer extends User{
                 "JOIN Rooms r ON gc.room_id = r.room_id\n" +
                 "WHERE gc.trainer_email = '"+email+"';";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
+        StringBuilder sb = new StringBuilder("<html>");
         while(rs.next()){
             String class_id = rs.getString("class_id");
-            addElement("class_id: "+class_id);
             String class_date = rs.getString("class_date");
-            addElement("class_date: "+class_date);
             String class_time = rs.getString("class_time");
-            addElement("class_time: "+class_time);
             String room_id = rs.getString("room_id");
-            addElement("room_id: "+room_id);
             String building = rs.getString("building");
-            addElement("building: "+building);
+            sb.append("class_id: "+class_id);
+            sb.append("<br>class_date: "+class_date);
+            sb.append("<br>class_time: "+class_time);
+            sb.append("<br>room_id: "+room_id);
+            sb.append("<br>building: "+building);
+            sb.append("</html>");
+            addElement(sb.toString());
         }
         // Close resources
         rs.close();
