@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
+
     public static void main(String[] args){
         String url = "jdbc:postgresql://localhost:5432/UrHealthApp";
         String user = "postgres";

@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Trainer functions and lots of refactoring + folders for diagrams and SQL">
+    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="added group class functions to Trainer Model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Trainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TrainerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TrainerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TrainerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712009122532</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added group class functions to Trainer Model">
+      <created>1712010678904</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712010678904</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -193,6 +200,7 @@
     <MESSAGE value="Member class: some get() functions implemented" />
     <MESSAGE value="Admin View, controller and functions setup + Trainer View and Controller setup" />
     <MESSAGE value="Trainer functions and lots of refactoring + folders for diagrams and SQL" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trainer functions and lots of refactoring + folders for diagrams and SQL" />
+    <MESSAGE value="added group class functions to Trainer Model" />
+    <option name="LAST_COMMIT_MESSAGE" value="added group class functions to Trainer Model" />
   </component>
 </project>

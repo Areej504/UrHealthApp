@@ -1,8 +1,6 @@
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.awt.*;
+import java.sql.*;
 
 /** This class initializes the login view for UrHealth App and prompts
  * user for email address to retrieve user profile.
@@ -11,23 +9,27 @@ import java.sql.Statement;
 
 public class LoginUI {
     private String userEmail;
-    private UserViews selectedView;
+    private UserViews selectedView; //the login view selected by user
     private Connection conn; //DB connection for email authentication
     public LoginUI(Connection conn){
         //set connection
         this.conn = conn;
 
         //create panel with buttons to select user type.
-        String users[] = {"Member", "Trainer", "Admin Staff"};
+        String users[] = {"Register","Member", "Trainer", "Admin Staff"};
         int selection = JOptionPane.showOptionDialog(null,
-                "Choose your login portal: ", "Welcome to UrHealth App!",
+                "Register or choose your login portal: ", "Welcome to UrHealth App!",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
                 null,
                 users, users[0]);
         //set the selected view for the app based on user type
         if(selection==0){
+            registerUI();
             selectedView = UserViews.Members;
+            return;
         }else if(selection==1){
+            selectedView = UserViews.Members;
+        }else if(selection==2){
             selectedView = UserViews.Trainer;
         }else{
             selectedView = UserViews.Admin_Staff;
@@ -67,6 +69,58 @@ public class LoginUI {
             }
         }
     }
+
+    /**
+     * display new member registration screen and prompt user to create an account
+     * by entering their name and email.
+     */
+    private void registerUI(){
+        //create JTextFields to collect input
+        JTextField email = new JTextField(20);
+        JTextField firstName = new JTextField(20);
+        JTextField lastName = new JTextField(20);
+
+        //add the input text fields and labels
+        JPanel myPanel = new JPanel();
+        myPanel.setLayout(new GridLayout(3,0));
+        myPanel.add(new JLabel("Email:"));
+        myPanel.add(email);
+        myPanel.add(new JLabel("First Name:"));
+        myPanel.add(firstName);
+        myPanel.add(new JLabel("Last Name:"));
+        myPanel.add(lastName);
+
+        //display JOptionPane and prompt user for input
+        int result = JOptionPane.showConfirmDialog(null, myPanel,
+                "Welcome! Enter your details to register", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            //insert the new Member into the database
+            addNewMember(email.getText(),firstName.getText(), lastName.getText());
+            //set the member's email
+            this.userEmail = email.getText();
+        }
+    }
+
+    /**
+     * Inserts a new member into the database.
+     * @param email
+     * @param first_name
+     * @param last_name
+     */
+    private void addNewMember(String email, String first_name, String last_name){
+        String insertSQL = "INSERT INTO Members (email, first_name, last_name) VALUES (?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+            pstmt.setString(1, email);
+            pstmt.setString(2, first_name);
+            pstmt.setString(3, last_name);
+            pstmt.executeUpdate();
+            System.out.println("Data inserted using PreparedStatement.");
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+    }
+
     /**
      * Authenticate the email provided by user through the DB connection.
      */

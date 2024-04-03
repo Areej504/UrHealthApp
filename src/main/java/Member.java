@@ -12,6 +12,10 @@ public class Member extends User{
     public void loadDashboard() {
     }
 
+    public void addMember(){
+
+    }
+
     public void getHealthMetrics() throws SQLException{
         this.clear(); //clear list to retrieve new info and display it
 
@@ -185,17 +189,17 @@ public class Member extends User{
         try{
             getPersonalInfo(); //retrieve personal info and add to listModel
         }catch(SQLException e){e.printStackTrace();}
-        sb.append("--Personal Info--<br>\n");
+        sb.append("--Personal Info--<br>");
         sb.append(this); //append the personal info retrieved
         try{
             getFitnessGoals(); //retrieve fitness goals and add to listModel
         }catch(SQLException e){e.printStackTrace();}
-        sb.append("\n<br>--Fitness Goals--<br>\n");
+        sb.append("<br>--Fitness Goals--<br>");
         sb.append(this); //append the fitness goals retrieved
         try{
             getHealthMetrics(); //retrieve health metrics and add to listModel
         }catch(SQLException e){e.printStackTrace();}
-        sb.append("\n<br>--Health Metrics--<br>\n");
+        sb.append("<br>--Health Metrics--<br>");
         sb.append(this); //append the health metrics retrieved
         sb.append("</html>");
 
