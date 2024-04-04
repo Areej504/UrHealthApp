@@ -17,7 +17,6 @@ public class TrainerView extends JFrame{
         this.add(listScrollPane, BorderLayout.CENTER);
 
         homePanel = new JPanel();
-
         //create the JMenuBar, JMenu and JMenu Items
         JMenuBar menuBar = new JMenuBar();
         JMenu homeMenu = new JMenu("Home");

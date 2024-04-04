@@ -12,6 +12,27 @@ public class Member extends User{
     public void loadDashboard() {
     }
 
+    public void updatePersonalInfo(){
+
+    }
+    public void updateHealthMetrics(){
+
+    }
+    public void addFitnessGoal(){
+
+    }
+    public void achieveFitnessGoal(){
+
+    }
+    public void addBooking(){
+
+    }
+    public void cancelBooking(){
+
+    }
+    public void createBilling(){
+
+    }
     public void getHealthMetrics() throws SQLException{
         this.clear(); //clear list to retrieve new info and display it
 

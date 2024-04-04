@@ -1,19 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MemberView extends JFrame{
     private Member user;
-    private JList<String> listView;
+    private JList<String> list;
     private JScrollPane listScrollPane;
     private JPanel homePanel ;
+    public String currFunction;
 
     public MemberView(Member user) {
         super("UrHealth App");
         this.user = user;
+        currFunction = "";
 
         //create and add the JList to the frame
-        listView = new JList<>(user);
-        listScrollPane =new JScrollPane(listView);
+        list = new JList<>(user);
+        listScrollPane =new JScrollPane(list);
         this.add(listScrollPane, BorderLayout.CENTER);
 
         homePanel = new JPanel();
@@ -69,6 +73,9 @@ public class MemberView extends JFrame{
         personalBrowse.addActionListener(control);
         groupBrowse.setActionCommand("groupBrowse");
         groupBrowse.addActionListener(control);
+
+        //listen for mouse clicks on the JList to book/cancel classes
+        setUpListListener();
 
         //Set up the dashboard which is the first thing user sees
         setUpDashboard();
@@ -150,6 +157,58 @@ public class MemberView extends JFrame{
         homePanel.add(contentPanel, BorderLayout.CENTER);
         this.add(homePanel);
         homePanel.setVisible(true);
+    }
+
+    private void setUpListListener(){
+        list.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                JList list = (JList)evt.getSource();
+                if (evt.getClickCount() == 2) {
+                    // Double-click detected
+                    int index = list.locationToIndex(evt.getPoint());
+                    switch (currFunction){
+                        case "myInfo":
+                            updateInfoDialog();
+                            break;
+                        case "metrics":
+                            updateMetricsDialog();
+                            break;
+                        case "goals":
+                           updateGoalsDialog();
+                            break;
+                        case "personalBooking":
+                        case "groupBooking":
+                            cancelBookingDialog();
+                            break;
+                        case "personalBrowse":
+                        case "groupBrowse":
+                            confirmBookingDialog();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        });
+    }
+    private void cancelBookingDialog(){
+
+    }
+    private void confirmBookingDialog(){
+        billingDialog();
+    }
+    private void updateInfoDialog(){
+
+    }
+    private void updateMetricsDialog(){
+
+    }
+    private void updateGoalsDialog(){
+
+    }
+
+    private void billingDialog(){
+
     }
 }
 

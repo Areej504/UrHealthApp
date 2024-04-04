@@ -16,6 +16,7 @@ public class MemberController implements ActionListener {
         //action commands for when a Menu/MenuItem is pressed
         //call model class functions to retrieve data
         String command = e.getActionCommand();
+        view.currFunction = command; //save the clicked menu's command to the view
         try {
             switch (command) {
                 case "dashboard":
