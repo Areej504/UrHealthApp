@@ -1,3 +1,3 @@
 public enum UserViews {
-    Members, Trainer, Admin_Staff
+    Members, Trainers, Admin_Staff
 }

@@ -13,11 +13,11 @@ VALUES
     ('porky.pig@example.com', 125, 72, 92, 68.9);
 
 -- Fitness Goals table
-INSERT INTO Fitness_goals (mem_email, weight, running_time)
+INSERT INTO Fitness_goals (mem_email, goal)
 VALUES
-    ('bugs.bunny@example.com', 160, '15'),
-    ('daffy.duck@example.com', 155, '45'),
-    ('porky.pig@example.com', 150, '30');
+    ('bugs.bunny@example.com', 'Deadlift 45 kg'),
+    ('daffy.duck@example.com', 'Stretch for 15 mins daily'),
+    ('porky.pig@example.com', 'Run for 30 minutes');
 
 -- Routine table
 INSERT INTO Routine (mem_email, routine)
@@ -29,9 +29,9 @@ VALUES
 -- Achievement table
 INSERT INTO Achievement (mem_email, achievement)
 VALUES
-    ('bugs.bunny@example.com', 'Ran 15 minutes'),
-    ('daffy.duck@example.com', 'Reached 155 kg'),
-    ('porky.pig@example.com', 'Ran 30 minutes');
+    ('bugs.bunny@example.com', 'Run 15 minutes'),
+    ('daffy.duck@example.com', 'Drop to 155 kg'),
+    ('porky.pig@example.com', 'Run 30 minutes');
 
 -- Billings table
 INSERT INTO Billings (mem_id, amount, date)

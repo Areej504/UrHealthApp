@@ -17,8 +17,7 @@ CREATE TABLE Health_metrics (
 -- Fitness Goals table
 CREATE TABLE Fitness_goals (
     mem_email VARCHAR(255) PRIMARY KEY,
-    weight NUMERIC,
-    running_time NUMERIC
+    goal TEXT
 );
 
 -- Routine table
@@ -42,7 +41,7 @@ CREATE TABLE Billings (
 );
 
 -- Trainer table
-CREATE TABLE Trainer (
+CREATE TABLE Trainers (
     email VARCHAR(255) PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL
@@ -64,7 +63,7 @@ CREATE TABLE Group_bookings (
 -- Group Classes table
 CREATE TABLE Group_classes (
     class_id SERIAL PRIMARY KEY,
-    trainer_email VARCHAR(255) REFERENCES Trainer(email),
+    trainer_email VARCHAR(255) REFERENCES Trainers(email),
     class_date DATE,
     class_time TIME,
     room_id INT REFERENCES Rooms(room_id),
@@ -83,7 +82,7 @@ CREATE TABLE Personal_bookings (
 -- Personal Sessions table
 CREATE TABLE Personal_sessions (
     session_id SERIAL PRIMARY KEY,
-    trainer_email VARCHAR(255) REFERENCES Trainer(email),
+    trainer_email VARCHAR(255) REFERENCES Trainers(email),
     session_date DATE,
     session_time TIME,
     room_id INT REFERENCES Rooms(room_id),

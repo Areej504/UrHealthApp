@@ -1,7 +1,5 @@
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Member extends User{
 
@@ -22,17 +20,18 @@ public class Member extends User{
 
     }
     public void achieveFitnessGoal(int index){
-//        String weight = parseAttribute((String) getElementAt(index), "weight");
-//        String running_time = parseAttribute((String) getElementAt(index), "running_time");
-//        String insertSQL = "INSERT INTO achievements (mem_email, achievement) VALUES (?, ?)";
-//        try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
-//            pstmt.setString(1, email);
-//            pstmt.setString(2, "weight");
-//            pstmt.executeUpdate();
-//            System.out.println("Data inserted using PreparedStatement.");
-//        }catch(SQLException se){
-//            se.printStackTrace();
-//        }
+        String goal = ((String) getElementAt(index));
+        String insertSQL = "INSERT INTO achievements (mem_email, achievement) VALUES (?, ?)\n"
+                +"DELETE FROM fitness_goals WHERE goal = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+            pstmt.setString(1, email);
+            pstmt.setString(2, goal);
+            pstmt.setString(3, goal);
+            pstmt.executeUpdate();
+            System.out.println("Data inserted using PreparedStatement.");
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
     }
     public void addPersonalBooking(int index){
         int session_id = parseSessionId((String) getElementAt(index)); //parse session id from selected list element
@@ -85,7 +84,7 @@ public class Member extends User{
     public void createBilling(){
         String insertSQL = "INSERT INTO billings (mem_email, amount, date) VALUES (?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
-            pstmt.setString(3, email);
+            pstmt.setString(1, email);
             pstmt.setInt(2, 15); //default price per session is $15
             Date today = Date.valueOf(LocalDate.now());
             pstmt.setDate(3, today); //set today's date as the billing date
@@ -129,10 +128,8 @@ public class Member extends User{
                 "WHERE mem_email = '" + email + "';";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
         while(rs.next()){
-            String weight = rs.getString("weight");
-            addElement("weight: "+weight);
-            String running_time = rs.getString("running_time");
-            addElement("running_time: "+running_time);
+            String goal = rs.getString("goal");
+            addElement(goal);
         }
         // Close resources
         rs.close();
@@ -295,19 +292,5 @@ public class Member extends User{
 
         //return the string builder as a string
         return sb.toString();
-    }
-    public String parseAttribute(String input, String attribute) {
-        // Regular expression pattern to match
-        Pattern pattern = Pattern.compile(attribute+": (\\d+)");
-        Matcher matcher = pattern.matcher(input);
-
-        // Check if the pattern is found in the input string
-        if (matcher.find()) {
-            // Extract and parse the session ID
-            String att = matcher.group(2);
-            return att;
-        }
-        // Return an empty string if the pattern is not found
-        return "";
     }
 }

@@ -188,7 +188,7 @@ public class MemberView extends JFrame{
 
     private void cancelBookingDialog(int index){
         //Confirm the booking cancellation
-        int choice = JOptionPane.showConfirmDialog(null,
+        int choice = JOptionPane.showConfirmDialog(this,
                 "Do you want to cancel this booking?","Booking Management", JOptionPane.YES_NO_OPTION);
         if(choice==JOptionPane.YES_OPTION) {
             if(currFunction == "personalBooking"){
@@ -200,7 +200,7 @@ public class MemberView extends JFrame{
     }
     private void confirmBookingDialog(int index){
         //display confirm booking message
-        int choice = JOptionPane.showConfirmDialog(null,
+        int choice = JOptionPane.showConfirmDialog(this,
                 "Do you want to book this session/class?","Confirm Booking", JOptionPane.YES_NO_OPTION);
         if(choice==JOptionPane.YES_OPTION) {
             billingDialog(index); //display the billing dialog to add billing
@@ -217,7 +217,7 @@ public class MemberView extends JFrame{
 
     private void achieveGoalDialog(int index) {
         //Achieve fitness goal
-        int choice = JOptionPane.showConfirmDialog(null,
+        int choice = JOptionPane.showConfirmDialog(this,
                 "Has this fitness goal been achieved?","New Achievement", JOptionPane.YES_NO_OPTION);
         if(choice==JOptionPane.YES_OPTION) {
             user.achieveFitnessGoal(index);
@@ -226,7 +226,7 @@ public class MemberView extends JFrame{
 
     private void billingDialog(int index){
         //display confirm Billing information message
-        int choice = JOptionPane.showConfirmDialog(null,
+        int choice = JOptionPane.showConfirmDialog(this,
                 "Booking: personal session or group class\n" +
                         "Amount: $15\n"+"Press OK to proceed to third-party payment service"
                 ,"BILLING", JOptionPane.OK_CANCEL_OPTION);
