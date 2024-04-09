@@ -20,13 +20,15 @@ public class Member extends User{
 
     }
     public void achieveFitnessGoal(int index){
+        //Add the selected fitness goal to achievements and delete it from existing fitness goals
         String goal = ((String) getElementAt(index));
-        String insertSQL = "INSERT INTO achievements (mem_email, achievement) VALUES (?, ?)\n"
-                +"DELETE FROM fitness_goals WHERE goal = ?";
+        String insertSQL = "INSERT INTO achievement (mem_email, achievement) VALUES (?, ?);\n"
+                +"DELETE FROM fitness_goals WHERE mem_email = ? AND goal = ?;";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setString(1, email);
             pstmt.setString(2, goal);
-            pstmt.setString(3, goal);
+            pstmt.setString(3, email);
+            pstmt.setString(4, goal);
             pstmt.executeUpdate();
             System.out.println("Data inserted using PreparedStatement.");
         }catch(SQLException se){

@@ -24,7 +24,7 @@ public class User extends DefaultListModel {
         String SQL = "SELECT *  FROM\n" +
                 "(SELECT * FROM Members \n" +
                 " UNION ALL \n" +
-                " SELECT * FROM Trainer \n" +
+                " SELECT * FROM Trainers \n" +
                 " UNION ALL \n" +
                 " SELECT * FROM Admin_Staff) AS all_users\n" +
                 " WHERE all_users.email = '"+email+"';";

@@ -16,26 +16,32 @@ CREATE TABLE Health_metrics (
 
 -- Fitness Goals table
 CREATE TABLE Fitness_goals (
-    mem_email VARCHAR(255) PRIMARY KEY,
-    goal TEXT
+    goal_id SERIAL PRIMARY KEY,
+    mem_email VARCHAR(255) REFERENCES Members(email),
+    goal TEXT,
+    CONSTRAINT unique_goals UNIQUE (mem_email, goal) -- Unique constraint to ensure no duplicate goals for the same member
 );
 
 -- Routine table
 CREATE TABLE Routine (
-    mem_email VARCHAR(255) PRIMARY KEY,
-    routine TEXT
+    routine_id SERIAL PRIMARY KEY,
+    mem_email VARCHAR(255) REFERENCES Members(email),
+    routine TEXT,
+    CONSTRAINT unique_routines UNIQUE (mem_email, routine) -- Unique constraint to ensure no duplicate goals for the same member
 );
 
 -- Achievement table
 CREATE TABLE Achievement (
-    mem_email VARCHAR(255) PRIMARY KEY,
-    achievement TEXT
+    achievement_id SERIAL PRIMARY KEY,
+    mem_email VARCHAR(255) REFERENCES Members(email),
+    achievement TEXT,
+    CONSTRAINT unique_achievements UNIQUE (mem_email, achievement) -- Unique constraint to ensure no duplicate goals for the same member
 );
 
 -- Billings table
 CREATE TABLE Billings (
     billing_id SERIAL PRIMARY KEY,
-    mem_id VARCHAR(255) REFERENCES Members(email),
+    mem_email VARCHAR(255) REFERENCES Members(email),
     amount NUMERIC,
     date DATE
 );

@@ -34,14 +34,14 @@ VALUES
     ('porky.pig@example.com', 'Run 30 minutes');
 
 -- Billings table
-INSERT INTO Billings (mem_id, amount, date)
+INSERT INTO Billings (mem_email, amount, date)
 VALUES
     ('bugs.bunny@example.com', 15.00, '2024-03-01'),
     ('daffy.duck@example.com', 15.00, '2024-03-05'),
     ('porky.pig@example.com', 15.00, '2024-03-10');
 
--- Trainer table
-INSERT INTO Trainer (email, first_name, last_name)
+-- Trainers table
+INSERT INTO Trainers (email, first_name, last_name)
 VALUES
     ('elmer.fudd@example.com', 'Elmer', 'Fudd'),
     ('tweety.bird@example.com', 'Tweety', 'Bird'),

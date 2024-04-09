@@ -56,10 +56,10 @@ public class AdminStaff extends User{
         String tuple;
         while(rs.next()){
             String billing_id = rs.getString("billing_id");
-            String mem_id = rs.getString("mem_id");
+            String mem_id = rs.getString("mem_email");
             String amount = rs.getString("amount");
             String date = rs.getString("date");
-            tuple = "billing_id: "+billing_id+", mem_id: "+mem_id+", amount: "+amount+", date: "+date;
+            tuple = "billing_id: "+billing_id+", mem_email: "+mem_id+", amount: "+amount+", date: "+date;
             addElement(tuple);
         }
         // Close resources
