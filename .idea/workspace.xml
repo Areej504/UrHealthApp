@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="fixed list fomatting">
+    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Set up update and cancel methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MemberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MemberView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MemberView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TrainerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TrainerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712186836275</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Set up update and cancel methods">
+      <created>1712193307489</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712193307489</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,6 +224,7 @@
     <MESSAGE value="added group class functions to Trainer Model" />
     <MESSAGE value="implemented new member registration" />
     <MESSAGE value="fixed list fomatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed list fomatting" />
+    <MESSAGE value="Set up update and cancel methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set up update and cancel methods" />
   </component>
 </project>

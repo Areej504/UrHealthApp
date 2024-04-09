@@ -167,22 +167,16 @@ public class MemberView extends JFrame{
                     // Double-click detected
                     int index = list.locationToIndex(evt.getPoint());
                     switch (currFunction){
-                        case "myInfo":
-                            updateInfoDialog();
-                            break;
-                        case "metrics":
-                            updateMetricsDialog();
-                            break;
                         case "goals":
-                           updateGoalsDialog();
+                            achieveGoalDialog(index);
                             break;
                         case "personalBooking":
                         case "groupBooking":
-                            cancelBookingDialog();
+                            cancelBookingDialog(index);
                             break;
                         case "personalBrowse":
                         case "groupBrowse":
-                            confirmBookingDialog();
+                            confirmBookingDialog(index);
                             break;
                         default:
                             break;
@@ -191,24 +185,61 @@ public class MemberView extends JFrame{
             }
         });
     }
-    private void cancelBookingDialog(){
+
+    private void cancelBookingDialog(int index){
+        //Confirm the booking cancellation
+        int choice = JOptionPane.showConfirmDialog(null,
+                "Do you want to cancel this booking?","Booking Management", JOptionPane.YES_NO_OPTION);
+        if(choice==JOptionPane.YES_OPTION) {
+            if(currFunction == "personalBooking"){
+                user.cancelPersonalBooking(index);
+            }else if(currFunction == "groupBooking"){
+                user.cancelGroupBooking(index);
+            }
+        }
+    }
+    private void confirmBookingDialog(int index){
+        //display confirm booking message
+        int choice = JOptionPane.showConfirmDialog(null,
+                "Do you want to book this session/class?","Confirm Booking", JOptionPane.YES_NO_OPTION);
+        if(choice==JOptionPane.YES_OPTION) {
+            billingDialog(index); //display the billing dialog to add billing
+        }
+    }
+    private void updateInfoDialog(int index){
 
     }
-    private void confirmBookingDialog(){
-        billingDialog();
-    }
-    private void updateInfoDialog(){
+    private void updateMetricsDialog(int index){
 
     }
-    private void updateMetricsDialog(){
-
-    }
-    private void updateGoalsDialog(){
-
+    private void updateGoalsDialog(int index){
     }
 
-    private void billingDialog(){
+    private void achieveGoalDialog(int index) {
+        //Achieve fitness goal
+        int choice = JOptionPane.showConfirmDialog(null,
+                "Has this fitness goal been achieved?","New Achievement", JOptionPane.YES_NO_OPTION);
+        if(choice==JOptionPane.YES_OPTION) {
+            user.achieveFitnessGoal(index);
+        }
+    }
 
+    private void billingDialog(int index){
+        //display confirm Billing information message
+        int choice = JOptionPane.showConfirmDialog(null,
+                "Booking: personal session or group class\n" +
+                        "Amount: $15\n"+"Press OK to proceed to third-party payment service"
+                ,"BILLING", JOptionPane.OK_CANCEL_OPTION);
+        if(choice==JOptionPane.OK_OPTION) {
+            //assume integration with payment service to complete billing
+            user.createBilling();
+            //add this booking to DB
+            if(currFunction == "personalBrowse"){
+                user.addPersonalBooking(index);
+            }else if(currFunction == "groupBrowse"){
+                user.addGroupBooking(index);
+            }
+        }
     }
 }
 

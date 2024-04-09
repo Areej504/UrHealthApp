@@ -1,7 +1,7 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Member extends User{
 
@@ -18,20 +18,82 @@ public class Member extends User{
     public void updateHealthMetrics(){
 
     }
-    public void addFitnessGoal(){
+    public void updateFitnessGoals(){
 
     }
-    public void achieveFitnessGoal(){
-
+    public void achieveFitnessGoal(int index){
+//        String weight = parseAttribute((String) getElementAt(index), "weight");
+//        String running_time = parseAttribute((String) getElementAt(index), "running_time");
+//        String insertSQL = "INSERT INTO achievements (mem_email, achievement) VALUES (?, ?)";
+//        try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+//            pstmt.setString(1, email);
+//            pstmt.setString(2, "weight");
+//            pstmt.executeUpdate();
+//            System.out.println("Data inserted using PreparedStatement.");
+//        }catch(SQLException se){
+//            se.printStackTrace();
+//        }
     }
-    public void addBooking(){
-
+    public void addPersonalBooking(int index){
+        int session_id = parseSessionId((String) getElementAt(index)); //parse session id from selected list element
+        String insertSQL = "INSERT INTO personal_bookings (session_id, mem_email) VALUES (?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+            pstmt.setInt(1, session_id);
+            pstmt.setString(2, email);
+            pstmt.executeUpdate();
+            System.out.println("Data inserted using PreparedStatement.");
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
     }
-    public void cancelBooking(){
-
+    public void addGroupBooking(int index){
+        int class_id = parseSessionId((String) getElementAt(index));
+        String insertSQL = "INSERT INTO group_bookings (class_id, mem_email) VALUES (?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+            pstmt.setInt(1, class_id);
+            pstmt.setString(2, email);
+            pstmt.executeUpdate();
+            System.out.println("Data inserted using PreparedStatement.");
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+    }
+    public void cancelPersonalBooking(int index){
+        int session_id = parseSessionId((String) getElementAt(index));
+        String deleteSQL = "DELETE FROM personal_bookings\n" +
+                "WHERE session_id = ?;";
+        try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
+            pstmt.setInt(1, session_id);
+            pstmt.executeUpdate();
+            System.out.println("Data deleted using PreparedStatement.");
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+    }
+    public void cancelGroupBooking(int index){
+        int class_id = parseSessionId((String) getElementAt(index));
+        String deleteSQL = "DELETE FROM group_bookings\n" +
+                "WHERE class_id = ?;";
+        try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
+            pstmt.setInt(1, class_id);
+            pstmt.executeUpdate();
+            System.out.println("Data deleted using PreparedStatement.");
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
     }
     public void createBilling(){
-
+        String insertSQL = "INSERT INTO billings (mem_email, amount, date) VALUES (?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+            pstmt.setString(3, email);
+            pstmt.setInt(2, 15); //default price per session is $15
+            Date today = Date.valueOf(LocalDate.now());
+            pstmt.setDate(3, today); //set today's date as the billing date
+            pstmt.executeUpdate();
+            System.out.println("Data inserted using PreparedStatement.");
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
     }
     public void getHealthMetrics() throws SQLException{
         this.clear(); //clear list to retrieve new info and display it
@@ -89,8 +151,8 @@ public class Member extends User{
                 "JOIN Rooms r ON ps.room_id = r.room_id\n" +
                 "WHERE pb.mem_email = '"+email+"';";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
-        StringBuilder sb = new StringBuilder("<html>");
         while(rs.next()){
+            StringBuilder sb = new StringBuilder("<html>");
             String session_id = rs.getString("session_id");
             String trainer_email = rs.getString("trainer_email");
             String session_date = rs.getString("session_date");
@@ -123,8 +185,8 @@ public class Member extends User{
                 "JOIN Rooms r ON gc.room_id = r.room_id\n" +
                 "WHERE gb.mem_email = '"+email+"';";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
-        StringBuilder sb = new StringBuilder("<html>");
         while(rs.next()){
+            StringBuilder sb = new StringBuilder("<html>");
             String class_id = rs.getString("class_id");
             String trainer_email = rs.getString("trainer_email");
             String class_date = rs.getString("class_date");
@@ -156,8 +218,8 @@ public class Member extends User{
                 "LEFT JOIN Personal_bookings pb ON ps.session_id = pb.session_id\n" +
                 "WHERE pb.session_id IS NULL;";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
-        StringBuilder sb = new StringBuilder("<html>");
         while(rs.next()){
+            StringBuilder sb = new StringBuilder("<html>");
             String session_id = rs.getString("session_id");
             String trainer_email = rs.getString("trainer_email");
             String session_date = rs.getString("session_date");
@@ -187,8 +249,8 @@ public class Member extends User{
                 "LEFT JOIN Group_bookings gb ON gc.class_id = gb.class_id\n" +
                 "WHERE gb.class_id IS NULL;";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
-        StringBuilder sb = new StringBuilder("<html>");
         while(rs.next()){
+            StringBuilder sb = new StringBuilder("<html>");
             String class_id = rs.getString("class_id");
             String trainer_email = rs.getString("trainer_email");
             String class_date = rs.getString("class_date");
@@ -233,5 +295,19 @@ public class Member extends User{
 
         //return the string builder as a string
         return sb.toString();
+    }
+    public String parseAttribute(String input, String attribute) {
+        // Regular expression pattern to match
+        Pattern pattern = Pattern.compile(attribute+": (\\d+)");
+        Matcher matcher = pattern.matcher(input);
+
+        // Check if the pattern is found in the input string
+        if (matcher.find()) {
+            // Extract and parse the session ID
+            String att = matcher.group(2);
+            return att;
+        }
+        // Return an empty string if the pattern is not found
+        return "";
     }
 }
