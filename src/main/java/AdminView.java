@@ -22,9 +22,12 @@ public class AdminView extends JFrame{
         JMenu homeMenu = new JMenu("Home");
         JMenuItem dashboard = new JMenuItem("Dashboard");
         JMenu manageMenu = new JMenu("Manage");
+        JMenu schedule = new JMenu("Schedule");
         JMenuItem roomsMenu = new JMenuItem("Rooms");
         JMenuItem equipMenu = new JMenuItem("Equipment");
         JMenuItem billingMenu = new JMenuItem("Billings");
+        JMenuItem personalSchedule= new JMenuItem("Personal Sessions");
+        JMenuItem groupSchedule = new JMenuItem("Group Classes");
 
         //add menus to menu bar
         homeMenu.add(dashboard);
@@ -33,6 +36,9 @@ public class AdminView extends JFrame{
         manageMenu.add(equipMenu);
         manageMenu.add(billingMenu);
         menuBar.add(manageMenu);
+        schedule.add(personalSchedule);
+        schedule.add(groupSchedule);
+        menuBar.add(schedule);
         // adds menu bar to the frame
         this.setJMenuBar(menuBar);
 
@@ -40,6 +46,10 @@ public class AdminView extends JFrame{
         AdminController control = new AdminController(user, this);
         dashboard.setActionCommand("dashboard");
         dashboard.addActionListener(control);
+        personalSchedule.setActionCommand("personal");
+        personalSchedule.addActionListener(control);
+        groupSchedule.setActionCommand("group");
+        groupSchedule.addActionListener(control);
         roomsMenu.setActionCommand("rooms");
         roomsMenu.addActionListener(control);
         equipMenu.setActionCommand("equip");

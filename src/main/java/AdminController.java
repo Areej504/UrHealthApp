@@ -21,6 +21,14 @@ public class AdminController implements ActionListener {
                 case "dashboard":
                     view.displayDashboard();
                     break;
+                case "personal":
+                    view.displayListView();
+                    model.getPersonalSessions();
+                    break;
+                case "group":
+                    view.displayListView();
+                    model.getGroupClasses();
+                    break;
                 case "rooms":
                     view.displayListView();
                     model.getRooms();

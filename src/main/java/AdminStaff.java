@@ -66,4 +66,11 @@ public class AdminStaff extends User{
         rs.close();
         stmt.close();
     }
+
+    public void getPersonalSessions(){
+
+    }
+    public void getGroupClasses(){
+
+    }
 }

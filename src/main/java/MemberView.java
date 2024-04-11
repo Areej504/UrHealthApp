@@ -129,16 +129,45 @@ public class MemberView extends JFrame{
                 "Update Personal Info", JOptionPane.OK_CANCEL_OPTION);
 
         if (result == JOptionPane.OK_OPTION) {
-            //update the members health metrics with given input
+            //update the members personal info with given input
             System.out.println((String) dropdown.getSelectedItem());
             System.out.println(newValue.getText());
             user.updatePersonalInfo((String) dropdown.getSelectedItem(), newValue.getText());
         }
     }
     public void updateMetricDialog(){
+        //create array of attributes to update
+        String[] choices = {"blood_pressure","heart_rate","blood_sugar", "weight"};
+        //create a dropdown list of choices and a text field for new value
+        JComboBox dropdown = new JComboBox(choices);
+        JTextField newValue = new JTextField(20);
 
+        //add input fields to a panel
+        JPanel panel = new JPanel(new GridLayout(2, 0));
+        panel.add(new JLabel("Health Metric"));
+        panel.add(dropdown);
+        panel.add(new JLabel("New value"));
+        panel.add(newValue);
+
+        //display JOptionPane and prompt user for input
+        int result = JOptionPane.showConfirmDialog(this, panel,
+                "Update Health Metrics", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            //update the members health metrics with given input
+            System.out.println((String) dropdown.getSelectedItem());
+            System.out.println(newValue.getText());
+            user.updateHealthMetric((String) dropdown.getSelectedItem(), newValue.getText());
+        }
     }
     public void addGoalDialog(){
+        //show the input dialog and get user input for a new fitness goal
+        String input = JOptionPane.showInputDialog(this, "Enter a new fitness goal",
+                "Add a fitness goal", JOptionPane.OK_OPTION);
+
+        //add the new goal to DB
+        user.addFitnessGoal(input);
+
     }
 
     //Set up dashboard design and feel

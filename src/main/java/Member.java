@@ -30,20 +30,19 @@ public class Member extends User{
     public void updateHealthMetric(String metric, String value){
         //update the given health metric with the given value.
         String insertSQL = "UPDATE Health_metrics\n" +
-                "SET ? = ?, \n" +
+                "SET "+metric+" = ? \n" +
                 "WHERE mem_email = '"+email+"';";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
-            pstmt.setString(1, metric);
-            pstmt.setInt(2, Integer.parseInt(value));
+            pstmt.setInt(1, Integer.parseInt(value));
             pstmt.executeUpdate();
             System.out.println("Data updated using PreparedStatement.");
         }catch(SQLException se){
             se.printStackTrace();
         }
     }
-    public void AddFitnessGoal(String goal){
-        //add a new
-        String insertSQL = "INSERT INTO fitness_goals (mem_email, ) VALUES (?, ?)";
+    public void addFitnessGoal(String goal){
+        //add a new goal
+        String insertSQL = "INSERT INTO fitness_goals (mem_email, goal) VALUES (?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setString(1, email);
             pstmt.setString(2, goal);
@@ -276,11 +275,9 @@ public class Member extends User{
 
         // Create statement
         Statement stmt = conn.createStatement(); // Execute SQL query
-        //get all group classes NOT booked yet
+        //get all group classes (capacity limit for group classes not implemented)
         String SQL = "SELECT gc.*\n" +
-                "FROM Group_classes gc\n" +
-                "LEFT JOIN Group_bookings gb ON gc.class_id = gb.class_id\n" +
-                "WHERE gb.class_id IS NULL;";
+                "FROM Group_classes gc;";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
         while(rs.next()){
             StringBuilder sb = new StringBuilder("<html>");

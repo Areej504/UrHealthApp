@@ -32,13 +32,10 @@ public class User extends DefaultListModel {
         while(rs.next()){
             String email = rs.getString("email");
             addElement("email: "+email);
-            System.out.println(getElementAt(0));
             String firstName = rs.getString("first_name");
             addElement("first_name: "+firstName);
-            System.out.println(getElementAt(1));
             String lastName = rs.getString("last_name");
             addElement("first_name: "+lastName);
-            System.out.println(getElementAt(2));
         }
         // Close resources
         rs.close();
