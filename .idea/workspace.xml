@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="fixed bug and implemented update metrics, info and goals">
+    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Update health metrics and goals views + set up Admin methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AdminStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminStaff.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MemberView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MemberView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712801845165</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Update health metrics and goals views + set up Admin methods">
+      <created>1712854802539</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1712854802539</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,6 +273,7 @@
     <MESSAGE value="updated diagrams" />
     <MESSAGE value="Bug Fixes" />
     <MESSAGE value="fixed bug and implemented update metrics, info and goals" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug and implemented update metrics, info and goals" />
+    <MESSAGE value="Update health metrics and goals views + set up Admin methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update health metrics and goals views + set up Admin methods" />
   </component>
 </project>

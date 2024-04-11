@@ -163,7 +163,7 @@ public class MemberView extends JFrame{
     public void addGoalDialog(){
         //show the input dialog and get user input for a new fitness goal
         String input = JOptionPane.showInputDialog(this, "Enter a new fitness goal",
-                "Add a fitness goal", JOptionPane.OK_OPTION);
+                "Add a fitness goal", JOptionPane.PLAIN_MESSAGE);
 
         //add the new goal to DB
         user.addFitnessGoal(input);
