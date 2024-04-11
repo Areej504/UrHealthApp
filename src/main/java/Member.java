@@ -10,13 +10,48 @@ public class Member extends User{
     public void loadDashboard() {
     }
 
-    public void updatePersonalInfo(){
-
+    public void updatePersonalInfo(String attribute, String value){
+        //update the member's attribute using the given value.
+        String updateSQL = "UPDATE Members\n" +
+                "SET "+attribute+" = ? \n" +
+                "WHERE email = '"+email+"';";
+        try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
+            pstmt.setString(1, value);
+            pstmt.executeUpdate();
+            System.out.println("Data updated using PreparedStatement.");
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+        //if email was updated, updated locally stored user email
+        if(attribute.equals("email")){
+            this.email = value;
+        }
     }
-    public void updateHealthMetrics(){
-
+    public void updateHealthMetric(String metric, String value){
+        //update the given health metric with the given value.
+        String insertSQL = "UPDATE Health_metrics\n" +
+                "SET ? = ?, \n" +
+                "WHERE mem_email = '"+email+"';";
+        try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+            pstmt.setString(1, metric);
+            pstmt.setInt(2, Integer.parseInt(value));
+            pstmt.executeUpdate();
+            System.out.println("Data updated using PreparedStatement.");
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
     }
-    public void updateFitnessGoals(){
+    public void AddFitnessGoal(String goal){
+        //add a new
+        String insertSQL = "INSERT INTO fitness_goals (mem_email, ) VALUES (?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+            pstmt.setString(1, email);
+            pstmt.setString(2, goal);
+            pstmt.executeUpdate();
+            System.out.println("Data inserted using PreparedStatement.");
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
 
     }
     public void achieveFitnessGoal(int index){
@@ -98,8 +133,7 @@ public class Member extends User{
     }
     public void getHealthMetrics() throws SQLException{
         this.clear(); //clear list to retrieve new info and display it
-
-        // Create statement
+        //create statement
         Statement stmt = conn.createStatement(); // Execute SQL query
         String SQL = "SELECT *\n" +
                 "FROM Health_metrics\n" +

@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="updated diagrams">
+    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Bug Fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SQL/DDL.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SQL/DDL.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQL/DML.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SQL/DML.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AdminStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminStaff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LoginUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MemberView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MemberView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712630917171</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Bug Fixes">
+      <created>1712633320362</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1712633320362</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -253,6 +257,7 @@
     <MESSAGE value="Implemented Group/Personal Booking and cancellation methods" />
     <MESSAGE value="Redesigned fitness_goals table and implemented achievements" />
     <MESSAGE value="updated diagrams" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated diagrams" />
+    <MESSAGE value="Bug Fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug Fixes" />
   </component>
 </project>

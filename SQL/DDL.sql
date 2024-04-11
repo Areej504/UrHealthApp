@@ -7,17 +7,19 @@ CREATE TABLE Members (
 
 -- Health Metrics table
 CREATE TABLE Health_metrics (
-    mem_email VARCHAR(255) PRIMARY KEY,
+	goal_id SERIAL,
+    mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE,
     blood_pressure NUMERIC,
     heart_rate NUMERIC,
     blood_sugar NUMERIC,
-    weight NUMERIC
+    weight NUMERIC,
+	PRIMARY KEY (mem_email, goal_id) -- composite key for the weak entity
 );
 
 -- Fitness Goals table
 CREATE TABLE Fitness_goals (
     goal_id SERIAL PRIMARY KEY,
-    mem_email VARCHAR(255) REFERENCES Members(email),
+    mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE,
     goal TEXT,
     CONSTRAINT unique_goals UNIQUE (mem_email, goal) -- Unique constraint to ensure no duplicate goals for the same member
 );
@@ -25,7 +27,7 @@ CREATE TABLE Fitness_goals (
 -- Routine table
 CREATE TABLE Routine (
     routine_id SERIAL PRIMARY KEY,
-    mem_email VARCHAR(255) REFERENCES Members(email),
+    mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE,
     routine TEXT,
     CONSTRAINT unique_routines UNIQUE (mem_email, routine) -- Unique constraint to ensure no duplicate goals for the same member
 );
@@ -33,7 +35,7 @@ CREATE TABLE Routine (
 -- Achievement table
 CREATE TABLE Achievement (
     achievement_id SERIAL PRIMARY KEY,
-    mem_email VARCHAR(255) REFERENCES Members(email),
+    mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE,
     achievement TEXT,
     CONSTRAINT unique_achievements UNIQUE (mem_email, achievement) -- Unique constraint to ensure no duplicate goals for the same member
 );
@@ -41,7 +43,7 @@ CREATE TABLE Achievement (
 -- Billings table
 CREATE TABLE Billings (
     billing_id SERIAL PRIMARY KEY,
-    mem_email VARCHAR(255) REFERENCES Members(email),
+    mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE,
     amount NUMERIC,
     date DATE
 );
@@ -61,7 +63,7 @@ CREATE TABLE Rooms (
 
 -- Group Bookings table
 CREATE TABLE Group_bookings (
-    mem_email VARCHAR(255) REFERENCES Members(email),
+    mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE,
     class_id INT,
     PRIMARY KEY (mem_email, class_id)
 );
@@ -82,7 +84,7 @@ CREATE TABLE Group_classes (
 -- Personal Bookings table
 CREATE TABLE Personal_bookings (
     session_id INT PRIMARY KEY,
-    mem_email VARCHAR(255) REFERENCES Members(email)
+    mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE
 );
 
 -- Personal Sessions table

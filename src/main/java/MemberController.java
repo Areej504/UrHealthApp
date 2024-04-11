@@ -27,13 +27,22 @@ public class MemberController implements ActionListener {
                     view.displayListView();
                     model.getPersonalInfo();
                     break;
+                case "updateInfo":
+                    view.updateInfoDialog();
+                    break;
                 case "metrics":
                     view.displayListView();
                     model.getHealthMetrics();
                     break;
+                case "updateMetrics":
+                    view.updateMetricDialog();
+                    break;
                 case "goals":
                     view.displayListView();
                     model.getFitnessGoals();
+                    break;
+                case "addGoal":
+                    view.addGoalDialog();
                     break;
                 case "personalBooking":
                     view.displayListView();

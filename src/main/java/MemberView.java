@@ -32,6 +32,9 @@ public class MemberView extends JFrame{
         JMenuItem myInfo = new JMenuItem("My Info");
         JMenuItem metrics = new JMenuItem("Health Metrics");
         JMenuItem goals = new JMenuItem("Fitness Goals");
+        JMenuItem updateInfo = new JMenuItem("Update Personal Info");
+        JMenuItem updateMetrics = new JMenuItem("Update Health Metrics");
+        JMenuItem addGoal = new JMenuItem("Add Fitness Goals");
         JMenuItem personalBooking = new JMenuItem("Personal Sessions");
         JMenuItem groupBooking = new JMenuItem("Group Classes");
         JMenuItem personalBrowse = new JMenuItem("Personal Sessions");
@@ -40,8 +43,11 @@ public class MemberView extends JFrame{
         //add menu items to menus
         homeMenu.add(dashboard);
         profileMenu.add(myInfo);
+        profileMenu.add(updateInfo);
         profileMenu.add(metrics);
+        profileMenu.add(updateMetrics);
         profileMenu.add(goals);
+        profileMenu.add(addGoal);
         bookingMenu.add(personalBooking);
         bookingMenu.add(groupBooking);
         browseMenu.add(personalBrowse);
@@ -65,6 +71,12 @@ public class MemberView extends JFrame{
         metrics.addActionListener(control);
         goals.setActionCommand("goals");
         goals.addActionListener(control);
+        updateInfo.setActionCommand("updateInfo");
+        updateInfo.addActionListener(control);
+        updateMetrics.setActionCommand("updateMetrics");
+        updateMetrics.addActionListener(control);
+        addGoal.setActionCommand("addGoal");
+        addGoal.addActionListener(control);
         personalBooking.setActionCommand("personalBooking");
         personalBooking.addActionListener(control);
         groupBooking.setActionCommand("groupBooking");
@@ -97,6 +109,36 @@ public class MemberView extends JFrame{
         this.add(homePanel);
         homePanel.setVisible(true);
         System.out.println("dashboard");
+    }
+    public void updateInfoDialog(){
+        //create array of attributes to update
+        String[] choices = {"email","first_name","last_name"};
+        //create a dropdown list of choices and a text field for new value
+        JComboBox dropdown = new JComboBox(choices);
+        JTextField newValue = new JTextField(20);
+
+        //add input fields to a panel
+        JPanel panel = new JPanel(new GridLayout(2, 0));
+        panel.add(new JLabel("Attribute"));
+        panel.add(dropdown);
+        panel.add(new JLabel("New value"));
+        panel.add(newValue);
+
+        //display JOptionPane and prompt user for input
+        int result = JOptionPane.showConfirmDialog(this, panel,
+                "Update Personal Info", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            //update the members health metrics with given input
+            System.out.println((String) dropdown.getSelectedItem());
+            System.out.println(newValue.getText());
+            user.updatePersonalInfo((String) dropdown.getSelectedItem(), newValue.getText());
+        }
+    }
+    public void updateMetricDialog(){
+
+    }
+    public void addGoalDialog(){
     }
 
     //Set up dashboard design and feel
@@ -205,14 +247,6 @@ public class MemberView extends JFrame{
         if(choice==JOptionPane.YES_OPTION) {
             billingDialog(index); //display the billing dialog to add billing
         }
-    }
-    private void updateInfoDialog(int index){
-
-    }
-    private void updateMetricsDialog(int index){
-
-    }
-    private void updateGoalsDialog(int index){
     }
 
     private void achieveGoalDialog(int index) {
