@@ -77,11 +77,13 @@ public class AdminStaff extends User{
             StringBuilder sb = new StringBuilder("<html>");
             String session_id = rs.getString("session_id");
             String trainer_email = rs.getString("trainer_email");
+            String  routine = rs.getString("routine");
             String session_date = rs.getString("session_date");
             String session_time = rs.getString("session_time");
             String room_id = rs.getString("room_id");
             sb.append("session_id: "+session_id);
             sb.append("<br>trainer_email: "+trainer_email);
+            sb.append("<br>routine: "+routine);
             sb.append("<br>session_date: "+session_date);
             sb.append("<br>session_time: "+session_time);
             sb.append("<br>room_id: "+room_id);
@@ -106,11 +108,13 @@ public class AdminStaff extends User{
             StringBuilder sb = new StringBuilder("<html>");
             String class_id = rs.getString("class_id");
             String trainer_email = rs.getString("trainer_email");
+            String  routine = rs.getString("routine");
             String class_date = rs.getString("class_date");
             String class_time = rs.getString("class_time");
             String room_id = rs.getString("room_id");
             sb.append("class_id: "+class_id);
             sb.append("<br>trainer_email: "+trainer_email);
+            sb.append("<br>routine: "+routine);
             sb.append("<br>class_date: "+class_date);
             sb.append("<br>class_time: "+class_time);
             sb.append("<br>room_id: "+room_id);

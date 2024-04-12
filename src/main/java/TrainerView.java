@@ -104,13 +104,16 @@ public class TrainerView extends JFrame{
 
     public ArrayList<String> getNewSessionInput() {
         //create JTextFields to collect input
+        JTextField routineField = new JTextField(15);
         JTextField dateField = new JTextField("YYYY-MM-DD",10);
         JTextField timeField = new JTextField("HH-MI",5);
         JTextField roomField = new JTextField(2);
 
         //add the input text fields and labels
         JPanel myPanel = new JPanel();
-        myPanel.setLayout(new GridLayout(3,0));
+        myPanel.setLayout(new GridLayout(4,0));
+        myPanel.add(new JLabel("Routine:"));
+        myPanel.add(routineField);
         myPanel.add(new JLabel("Date:"));
         myPanel.add(dateField);
         myPanel.add(new JLabel("Time:"));
@@ -125,6 +128,7 @@ public class TrainerView extends JFrame{
         //retrieve and store user input to return
         ArrayList<String> inputList = new ArrayList<>();
         if (result == JOptionPane.OK_OPTION) {
+            inputList.add(routineField.getText());
             inputList.add(dateField.getText());
             inputList.add(timeField.getText());
             inputList.add(roomField.getText());

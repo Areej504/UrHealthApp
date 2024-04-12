@@ -7,9 +7,6 @@ public class Member extends User{
         super(email, conn);
     }
 
-    public void loadDashboard() {
-    }
-
     public void updatePersonalInfo(String attribute, String value){
         //update the member's attribute using the given value.
         String updateSQL = "UPDATE Members\n" +
@@ -70,11 +67,20 @@ public class Member extends User{
         }
     }
     public void addPersonalBooking(int index){
+        //insert the new booking into personal_bookings and add the corresponding routine
+        //into this member's routines
         int session_id = parseSessionId((String) getElementAt(index)); //parse session id from selected list element
-        String insertSQL = "INSERT INTO personal_bookings (session_id, mem_email) VALUES (?, ?)";
+        String insertSQL = "INSERT INTO personal_bookings (session_id, mem_email)\n" +
+                "VALUES (?, ?);\n" +
+                "\n" +
+                "INSERT INTO Routine (mem_email, routine)\n" +
+                "SELECT '"+email+"', routine\n" +
+                "FROM personal_sessions\n" +
+                "WHERE session_id = ?;";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setInt(1, session_id);
             pstmt.setString(2, email);
+            pstmt.setInt(3, session_id);
             pstmt.executeUpdate();
             System.out.println("Data inserted using PreparedStatement.");
         }catch(SQLException se){
@@ -82,11 +88,20 @@ public class Member extends User{
         }
     }
     public void addGroupBooking(int index){
+        //insert the new booking into group_bookings and add the corresponding routine
+        //into this member's routines
         int class_id = parseSessionId((String) getElementAt(index));
-        String insertSQL = "INSERT INTO group_bookings (class_id, mem_email) VALUES (?, ?)";
+        String insertSQL = "INSERT INTO group_bookings (class_id, mem_email)\n" +
+                "VALUES (?, ?);\n" +
+                "\n" +
+                "INSERT INTO Routine (mem_email, routine)\n" +
+                "SELECT '"+email+"', routine\n" +
+                "FROM group_classes\n" +
+                "WHERE class_id = ?;";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setInt(1, class_id);
             pstmt.setString(2, email);
+            pstmt.setInt(3, class_id);
             pstmt.executeUpdate();
             System.out.println("Data inserted using PreparedStatement.");
         }catch(SQLException se){
@@ -177,7 +192,7 @@ public class Member extends User{
         // Create statement
         Statement stmt = conn.createStatement(); // Execute SQL query
         //get all personal sessions booked by this user and include the room info for each
-        String SQL = "SELECT ps.session_id, ps.trainer_email, ps.session_date, ps.session_time, ps.room_id, r.building\n" +
+        String SQL = "SELECT ps.session_id, ps.trainer_email, ps.routine, ps.session_date, ps.session_time, ps.room_id, r.building\n" +
                 "FROM Personal_sessions ps\n" +
                 "JOIN Personal_bookings pb ON ps.session_id = pb.session_id\n" +
                 "JOIN Rooms r ON ps.room_id = r.room_id\n" +
@@ -187,12 +202,14 @@ public class Member extends User{
             StringBuilder sb = new StringBuilder("<html>");
             String session_id = rs.getString("session_id");
             String trainer_email = rs.getString("trainer_email");
+            String routine = rs.getString("routine");
             String session_date = rs.getString("session_date");
             String session_time = rs.getString("session_time");
             String room_id = rs.getString("room_id");
             String building = rs.getString("building");
             sb.append("session_id: "+session_id);
             sb.append("<br>trainer_email: "+trainer_email);
+            sb.append("<br>routine: "+routine);
             sb.append("<br>session_date: "+session_date);
             sb.append("<br>session_time: "+session_time);
             sb.append("<br>room_id: "+room_id);
@@ -211,7 +228,7 @@ public class Member extends User{
         // Create statement
         Statement stmt = conn.createStatement(); // Execute SQL query
         //get all group classes booked by this user and include the room info for each
-        String SQL = "SELECT gc.class_id, gc.trainer_email, gc.class_date, gc.class_time, gc.room_id, r.building\n" +
+        String SQL = "SELECT gc.class_id, gc.trainer_email, gc.routine, gc.class_date, gc.class_time, gc.room_id, r.building\n" +
                 "FROM Group_classes gc\n" +
                 "JOIN Group_bookings gb ON gc.class_id = gb.class_id\n" +
                 "JOIN Rooms r ON gc.room_id = r.room_id\n" +
@@ -221,12 +238,14 @@ public class Member extends User{
             StringBuilder sb = new StringBuilder("<html>");
             String class_id = rs.getString("class_id");
             String trainer_email = rs.getString("trainer_email");
+            String routine = rs.getString("routine");
             String class_date = rs.getString("class_date");
             String class_time = rs.getString("class_time");
             String room_id = rs.getString("room_id");
             String building = rs.getString("building");
             sb.append("class_id: "+class_id);
             sb.append("<br>trainer_email: "+trainer_email);
+            sb.append("<br>routine: "+routine);
             sb.append("<br>class_date: "+class_date);
             sb.append("<br>class_time: "+class_time);
             sb.append("<br>room_id: "+room_id);
@@ -254,11 +273,13 @@ public class Member extends User{
             StringBuilder sb = new StringBuilder("<html>");
             String session_id = rs.getString("session_id");
             String trainer_email = rs.getString("trainer_email");
+            String routine = rs.getString("routine");
             String session_date = rs.getString("session_date");
             String session_time = rs.getString("session_time");
             String room_id = rs.getString("room_id");
             sb.append("session_id: "+session_id);
             sb.append("<br>trainer_email: "+trainer_email);
+            sb.append("<br>routine: "+routine);
             sb.append("<br>session_date: "+session_date);
             sb.append("<br>session_time: "+session_time);
             sb.append("<br>room_id: "+room_id);
@@ -283,11 +304,13 @@ public class Member extends User{
             StringBuilder sb = new StringBuilder("<html>");
             String class_id = rs.getString("class_id");
             String trainer_email = rs.getString("trainer_email");
+            String routine = rs.getString("routine");
             String class_date = rs.getString("class_date");
             String class_time = rs.getString("class_time");
             String room_id = rs.getString("room_id");
             sb.append("class_id: "+class_id);
             sb.append("<br>trainer_email: "+trainer_email);
+            sb.append("<br>routine: "+routine);
             sb.append("<br>class_date: "+class_date);
             sb.append("<br>class_time: "+class_time);
             sb.append("<br>room_id: "+room_id);
@@ -324,6 +347,67 @@ public class Member extends User{
         sb.append("</html>");
 
         //return the string builder as a string
+        return sb.toString();
+    }
+
+    public String getRoutines() throws SQLException{
+        // Create statement
+        Statement stmt = conn.createStatement(); // Execute SQL query
+        String SQL = "SELECT *\n" +
+                "FROM routine\n" +
+                "WHERE mem_email = '" + email + "';";
+        ResultSet rs = stmt.executeQuery(SQL); // Process the result set
+        StringBuilder sb = new StringBuilder("");
+        while(rs.next()){
+            String routine = rs.getString("routine");
+            sb.append(routine+"\n");
+        }
+        // Close resources
+        rs.close();
+        stmt.close();
+        return sb.toString();
+    }
+
+    public String getHealthStatistics() throws SQLException{
+        this.clear(); //clear list to retrieve new info and display it
+        //create statement
+        Statement stmt = conn.createStatement(); // Execute SQL query
+        String SQL = "SELECT *\n" +
+                "FROM Health_metrics\n" +
+                "WHERE mem_email = '" + email + "';";
+        ResultSet rs = stmt.executeQuery(SQL); // Process the result set
+        StringBuilder sb = new StringBuilder("");
+        while(rs.next()){
+            String blood_pressure = rs.getString("blood_pressure");
+            sb.append("blood_pressure: "+blood_pressure+"\n");
+            String heart_rate = rs.getString("heart_rate");
+            sb.append("heart_rate: "+heart_rate+"\n");
+            String blood_sugar = rs.getString("blood_sugar");
+            sb.append("blood_sugar: "+blood_sugar+"\n");
+            String weight = rs.getString("weight");
+            sb.append("weight: "+weight+"\n");
+        }
+        // Close resources
+        rs.close();
+        stmt.close();
+        return sb.toString();
+    }
+
+    public String getAchievements()throws SQLException {
+        // Create statement
+        Statement stmt = conn.createStatement(); // Execute SQL query
+        String SQL = "SELECT *\n" +
+                "FROM Achievement\n" +
+                "WHERE mem_email = '" + email + "';";
+        ResultSet rs = stmt.executeQuery(SQL); // Process the result set
+        StringBuilder sb = new StringBuilder("");
+        while(rs.next()){
+            String achievement = rs.getString("achievement");
+            sb.append(achievement+"\n");
+        }
+        // Close resources
+        rs.close();
+        stmt.close();
         return sb.toString();
     }
 }

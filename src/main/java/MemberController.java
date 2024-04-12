@@ -20,7 +20,6 @@ public class MemberController implements ActionListener {
         try {
             switch (command) {
                 case "dashboard":
-                    model.loadDashboard();
                     view.displayDashboard();
                     break;
                 case "myInfo":

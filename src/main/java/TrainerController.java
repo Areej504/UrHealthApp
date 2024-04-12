@@ -29,7 +29,7 @@ public class TrainerController implements ActionListener {
                 case "addSession":
                     view.displayListView();
                     ArrayList<String> in = view.getNewSessionInput();
-                    model.addSession(in.get(0), in.get(1), in.get(2));
+                    model.addSession(in.get(0), in.get(1), in.get(2), in.get(3));
                     break;
                 case "bookedSessions":
                     view.displayListView();
@@ -38,7 +38,7 @@ public class TrainerController implements ActionListener {
                 case "addClass":
                     view.displayListView();
                     ArrayList<String> l = view.getNewSessionInput();
-                    model.addClass(l.get(0), l.get(1), l.get(2));
+                    model.addClass(l.get(0), l.get(1), l.get(2), l.get(3));
                     break;
                 case "bookedClasses":
                     view.displayListView();

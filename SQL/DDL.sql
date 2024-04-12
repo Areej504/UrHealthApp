@@ -29,7 +29,7 @@ CREATE TABLE Routine (
     routine_id SERIAL PRIMARY KEY,
     mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE,
     routine TEXT,
-    CONSTRAINT unique_routines UNIQUE (mem_email, routine) -- Unique constraint to ensure no duplicate goals for the same member
+    CONSTRAINT unique_routines UNIQUE (mem_email, routine) -- Unique constraint to ensure no duplicate routines for the same member
 );
 
 -- Achievement table
@@ -37,7 +37,7 @@ CREATE TABLE Achievement (
     achievement_id SERIAL PRIMARY KEY,
     mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE,
     achievement TEXT,
-    CONSTRAINT unique_achievements UNIQUE (mem_email, achievement) -- Unique constraint to ensure no duplicate goals for the same member
+    CONSTRAINT unique_achievements UNIQUE (mem_email, achievement) -- Unique constraint to ensure no duplicate achievements for the same member
 );
 
 -- Billings table
@@ -71,6 +71,7 @@ CREATE TABLE Group_bookings (
 -- Group Classes table
 CREATE TABLE Group_classes (
     class_id SERIAL PRIMARY KEY,
+	routine TEXT,
     trainer_email VARCHAR(255) REFERENCES Trainers(email),
     class_date DATE,
     class_time TIME,
@@ -83,13 +84,15 @@ CREATE TABLE Group_classes (
 
 -- Personal Bookings table
 CREATE TABLE Personal_bookings (
-    session_id INT PRIMARY KEY,
-    mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE
+	mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE,
+    session_id INT,
+    PRIMARY KEY (mem_email, session_id)
 );
 
 -- Personal Sessions table
 CREATE TABLE Personal_sessions (
     session_id SERIAL PRIMARY KEY,
+	routine TEXT,
     trainer_email VARCHAR(255) REFERENCES Trainers(email),
     session_date DATE,
     session_time TIME,

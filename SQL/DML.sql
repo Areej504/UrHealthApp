@@ -23,8 +23,11 @@ VALUES
 INSERT INTO Routine (mem_email, routine)
 VALUES
     ('bugs.bunny@example.com', 'Cardio'),
+	('bugs.bunny@example.com', 'Yoga'),
     ('daffy.duck@example.com', 'Weight training'),
+	('daffy.duck@example.com', 'Zumba Dance'),
     ('porky.pig@example.com', 'Yoga');
+	('porky.pig@example.com', 'Deadlifting');
 
 -- Achievement table
 INSERT INTO Achievement (mem_email, achievement)
@@ -58,29 +61,29 @@ VALUES
 INSERT INTO Group_bookings (mem_email, class_id)
 VALUES
     ('bugs.bunny@example.com', 1),
-    ('daffy.duck@example.com', 1),
-    ('porky.pig@example.com', 3);
+    ('daffy.duck@example.com', 2),
+    ('porky.pig@example.com', 1);
 
 -- Group Classes table
-INSERT INTO Group_classes (trainer_email, class_date, class_time, room_id)
+INSERT INTO Group_classes (trainer_email, routine, class_date, class_time, room_id)
 VALUES
-    ('elmer.fudd@example.com', '2024-03-01', '10:00', 1),
-    ('tweety.bird@example.com', '2024-03-05', '11:00', 2),
-    ('sylvester.cat@example.com', '2024-03-10', '12:00', 3);
+    ('elmer.fudd@example.com', 'Yoga', '2024-03-01', '10:00', 1),
+    ('tweety.bird@example.com', 'Zumba Dance', '2024-03-05', '11:00', 2),
+    ('sylvester.cat@example.com', 'Swimming', '2024-03-10', '12:00', 3);
 
 -- Personal Bookings table
 INSERT INTO Personal_bookings (session_id, mem_email)
 VALUES
-    (1, 'bugs.bunny@example.com'),
-    (2, 'daffy.duck@example.com'),
-    (3, 'porky.pig@example.com');
+    ('bugs.bunny@example.com', 1),
+    ('daffy.duck@example.com', 2),
+    ('porky.pig@example.com', 3);
 
 -- Personal Sessions table
-INSERT INTO Personal_sessions (trainer_email, session_date, session_time, room_id)
+INSERT INTO Personal_sessions (trainer_email, routine, session_date, session_time, room_id)
 VALUES
-    ('elmer.fudd@example.com', '2024-03-01', '13:00', 1),
-    ('tweety.bird@example.com', '2024-03-05', '12:00', 2),
-    ('sylvester.cat@example.com', '2024-03-10', '20:00', 3);
+    ('elmer.fudd@example.com', 'Cardio', '2024-03-01', '13:00', 1),
+    ('tweety.bird@example.com', 'Weight training', '2024-03-05', '12:00', 2),
+    ('sylvester.cat@example.com', 'Deadlifting', '2024-03-10', '20:00', 2);
 
 -- Admin Staff table
 INSERT INTO Admin_staff (email, first_name, last_name)

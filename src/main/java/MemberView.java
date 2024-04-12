@@ -2,18 +2,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 public class MemberView extends JFrame{
     private Member user;
     private JList<String> list;
     private JScrollPane listScrollPane;
     private JPanel homePanel ;
+    JTextArea exerciseTextArea, achievementsTextArea, statisticsTextArea;
     public String currFunction;
 
     public MemberView(Member user) {
         super("UrHealth App");
         this.user = user;
         currFunction = "";
+        exerciseTextArea = new JTextArea();
+        achievementsTextArea = new JTextArea();
+        statisticsTextArea = new JTextArea();
 
         //create and add the JList to the frame
         list = new JList<>(user);
@@ -91,6 +96,9 @@ public class MemberView extends JFrame{
 
         //Set up the dashboard which is the first thing user sees
         setUpDashboard();
+        try {
+            displayDashboard(); //populate the dashboard text areas
+        }catch (SQLException e){}
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600,600);
@@ -104,7 +112,12 @@ public class MemberView extends JFrame{
         System.out.println("listview");
     }
     //display the list pane to view user data
-    public void displayDashboard(){
+    public void displayDashboard() throws SQLException {
+        //update the Dashboard text areas with current data
+        exerciseTextArea.setText(user.getRoutines());
+        achievementsTextArea.setText(user.getAchievements());
+        statisticsTextArea.setText(user.getHealthStatistics());
+
         listScrollPane.setVisible(false);
         this.add(homePanel);
         homePanel.setVisible(true);
@@ -191,8 +204,6 @@ public class MemberView extends JFrame{
         JLabel exerciseLabel = new JLabel("Exercise Routines");
         exerciseLabel.setFont(new Font("Arial", Font.BOLD, 16));
         contentPanel.add(exerciseLabel);
-        //TODO: Get this info from the DB connection through model
-        JTextArea exerciseTextArea = new JTextArea("Exercise routine 1\nExercise routine 2\nExercise routine 3");
         exerciseTextArea.setEditable(false);
         exerciseTextArea.setLineWrap(true);
         exerciseTextArea.setWrapStyleWord(true);
@@ -203,8 +214,6 @@ public class MemberView extends JFrame{
         JLabel achievementsLabel = new JLabel("Fitness Achievements");
         achievementsLabel.setFont(new Font("Arial", Font.BOLD, 16));
         contentPanel.add(achievementsLabel);
-        //TODO: Get this info from the DB connection through model
-        JTextArea achievementsTextArea = new JTextArea("Achievement 1\nAchievement 2\nAchievement 3");
         achievementsTextArea.setEditable(false);
         achievementsTextArea.setLineWrap(true);
         achievementsTextArea.setWrapStyleWord(true);
@@ -215,8 +224,6 @@ public class MemberView extends JFrame{
         JLabel statisticsLabel = new JLabel("Health Statistics");
         statisticsLabel.setFont(new Font("Arial", Font.BOLD, 16));
         contentPanel.add(statisticsLabel);
-        //TODO: Get this info from the DB connection through model
-        JTextArea statisticsTextArea = new JTextArea("Statistic 1: Value\nStatistic 2: Value\nStatistic 3: Value");
         statisticsTextArea.setEditable(false);
         statisticsTextArea.setLineWrap(true);
         statisticsTextArea.setWrapStyleWord(true);
