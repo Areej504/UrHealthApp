@@ -1,5 +1,9 @@
 import java.sql.*;
-
+/**
+ * Trainer class implements trainer functionality that executes SQL queries through
+ * a database connection and update the DefaultListModel with the result sets.
+ * @author Areej Mahmoud 101218260
+ */
 public class Trainer extends User{
     public Trainer(String email, Connection conn) {
         super(email, conn);
@@ -34,8 +38,8 @@ public class Trainer extends User{
                 "JOIN Rooms r ON ps.room_id = r.room_id\n"+
                 "WHERE ps.trainer_email = '"+email+"';";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
-        StringBuilder sb = new StringBuilder("<html>");
         while(rs.next()){
+            StringBuilder sb = new StringBuilder("<html>");
             String session_id = rs.getString("session_id");
             String mem_email = rs.getString("mem_email");
             String routine = rs.getString("routine");
@@ -94,8 +98,8 @@ public class Trainer extends User{
                 "WHERE gc.trainer_email = '"+email+"'\n" +
                 "GROUP BY gc.class_id, gc.routine, gc.class_date, gc.class_time, r.room_id, r.building;\n";
         ResultSet rs = stmt.executeQuery(SQL); // Process the result set
-        StringBuilder sb = new StringBuilder("<html>");
         while(rs.next()){
+            StringBuilder sb = new StringBuilder("<html>");
             String class_id = rs.getString("class_id");
             String routine = rs.getString("routine");
             String class_date = rs.getString("class_date");

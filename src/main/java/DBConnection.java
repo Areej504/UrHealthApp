@@ -2,6 +2,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * DBConnection class establishes a connection with the PostgreSQL Database
+ * and launches the LoginUI and User views
+ * @author Areej Mahmoud 101218260
+ */
 public class DBConnection {
 
     public static void main(String[] args){

@@ -3,8 +3,8 @@ import java.awt.*;
 import java.sql.*;
 
 /** This class initializes the login view for UrHealth App and prompts
- * user for email address to retrieve user profile.
- * @author Areej Mahmoud
+ * user for email address to autheticate and retrieve user profile.
+ * @author Areej Mahmoud 101218260
  */
 
 public class LoginUI {

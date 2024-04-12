@@ -1,6 +1,10 @@
 import java.sql.*;
 import java.time.LocalDate;
-
+/**
+ * Member class implements member functionality that executes SQL queries through
+ * a database connection and update the DefaultListModel with the result sets.
+ * @author Areej Mahmoud 101218260
+ */
 public class Member extends User{
 
     public Member(String email, Connection conn) {

@@ -70,6 +70,7 @@ The following known issues were not fixed due to the time constraint of this pro
 
 ## Video Demonstration
 Watch the Video below for a live demo of the UrHealthApp project's functionality!
+https://youtu.be/66hUq1v6mpQ
 
 ## Author
 Areej Mahmoud 101218260

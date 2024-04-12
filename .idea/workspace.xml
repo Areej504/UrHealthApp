@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="bug fix in DML">
+    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="bug fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/design_diagrams/DB_schema.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/design_diagrams/DB_schema.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/design_diagrams/DB_schema.drawio.png" beforeDir="false" afterPath="$PROJECT_DIR$/design_diagrams/DB_schema.drawio.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AdminStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminStaff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Trainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712950858439</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="bug fix">
+      <created>1712953024021</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1712953024021</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -302,7 +313,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="GUI Menu Setup (Member View)" />
     <MESSAGE value="Added user model classes and more setup" />
     <MESSAGE value="Login UI and set up Trainer/Admin Views" />
     <MESSAGE value="setUpDashboard() with styling+logo+text fields" />
@@ -327,6 +337,7 @@
     <MESSAGE value="README.md and updated DML" />
     <MESSAGE value="updated diagrams" />
     <MESSAGE value="bug fix in DML" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix in DML" />
+    <MESSAGE value="bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
   </component>
 </project>

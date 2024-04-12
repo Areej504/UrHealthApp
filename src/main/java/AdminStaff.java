@@ -1,5 +1,9 @@
 import java.sql.*;
-
+/**
+ * AdminStaff class implements admin functionality that executes SQL queries through
+ * a database connection and update the DefaultListModel with the result sets.
+ * @author Areej Mahmoud 101218260
+ */
 public class AdminStaff extends User{
 
     public AdminStaff(String email, Connection conn) {

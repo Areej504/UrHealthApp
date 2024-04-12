@@ -6,6 +6,11 @@ import java.sql.Statement;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * User is the superclass for all Model classes in the MVC structure. It stores the
+ * user email and DB connection and extends DefaultListModel.
+ * @author Areej Mahmoud 101218260
+ */
 public class User extends DefaultListModel {
     public String email; //the unique user id
     public Connection conn; //postgreSQL connection
