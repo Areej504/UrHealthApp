@@ -7,13 +7,13 @@ CREATE TABLE Members (
 
 -- Health Metrics table
 CREATE TABLE Health_metrics (
-	goal_id SERIAL,
+	metric_id SERIAL,
     mem_email VARCHAR(255) REFERENCES Members(email) ON UPDATE CASCADE,
     blood_pressure NUMERIC,
     heart_rate NUMERIC,
     blood_sugar NUMERIC,
     weight NUMERIC,
-	PRIMARY KEY (mem_email, goal_id) -- composite key for the weak entity
+	PRIMARY KEY (mem_email, metric_id) -- composite key for the weak entity
 );
 
 -- Fitness Goals table

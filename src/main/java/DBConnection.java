@@ -7,7 +7,7 @@ public class DBConnection {
     public static void main(String[] args){
         String url = "jdbc:postgresql://localhost:5432/UrHealthApp";
         String user = "postgres";
-        String password = "24AreejSQL";
+        String password = "24AreejSQL"; //change this based on postgres
         try {
             // Load PostgreSQL JDBC Driver
             Class.forName("org.postgresql.Driver");
