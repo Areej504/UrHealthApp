@@ -109,11 +109,15 @@ public class LoginUI {
      * @param last_name
      */
     private void addNewMember(String email, String first_name, String last_name){
-        String insertSQL = "INSERT INTO Members (email, first_name, last_name) VALUES (?, ?, ?)";
+        //insert the new members info and an null values for their health metrics
+        String insertSQL = "INSERT INTO Members (email, first_name, last_name) VALUES (?, ?, ?);"+
+                "INSERT INTO health_metrics (mem_email, blood_pressure, heart_rate, blood_sugar, weight)\n" +
+                "VALUES (?, 0, 0, 0, 0);";
         try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setString(1, email);
             pstmt.setString(2, first_name);
             pstmt.setString(3, last_name);
+            pstmt.setString(4, email);
             pstmt.executeUpdate();
             System.out.println("Data inserted using PreparedStatement.");
         }catch(SQLException se){
