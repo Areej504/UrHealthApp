@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="Implemented Routines and Dashboard Display">
+    <list default="true" id="e304aca9-311d-472d-babb-db3231b79832" name="Changes" comment="README.md and updated DML">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQL/DML.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SQL/DML.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/design_diagrams/DB_schema.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/design_diagrams/DB_schema.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/design_diagrams/DB_schema.drawio.png" beforeDir="false" afterPath="$PROJECT_DIR$/design_diagrams/DB_schema.drawio.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/design_diagrams/ER_Model.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/design_diagrams/ER_Model.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/design_diagrams/ER_Model.drawio.png" beforeDir="false" afterPath="$PROJECT_DIR$/design_diagrams/ER_Model.drawio.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712948425937</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="README.md and updated DML">
+      <created>1712950104866</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1712950104866</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -303,6 +313,7 @@
     <MESSAGE value="Updated DDL and diagrams" />
     <MESSAGE value="added diagrams as png" />
     <MESSAGE value="Implemented Routines and Dashboard Display" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Routines and Dashboard Display" />
+    <MESSAGE value="README.md and updated DML" />
+    <option name="LAST_COMMIT_MESSAGE" value="README.md and updated DML" />
   </component>
 </project>
