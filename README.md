@@ -58,6 +58,7 @@ The project is organized into the following classes:
 ## Known Issues
 The following known issues were not fixed due to the time constraint of this project, but can be fixed in future iterations.
 
+- The application does not implement passwords, however this can easily be added to the DB tables and LoginUI.
 - LoginUI proceeds with displaying the email prompt and Member view even if the dialog box is cancelled.
 - Routines are not removed from a member's dashboard if the member cancels the corresponding booking.
 - No error messages are displayed to the view if a SQL exception occurs when retrieving data.

@@ -26,7 +26,7 @@ VALUES
 	('bugs.bunny@example.com', 'Yoga'),
     ('daffy.duck@example.com', 'Weight training'),
 	('daffy.duck@example.com', 'Zumba Dance'),
-    ('porky.pig@example.com', 'Yoga');
+    ('porky.pig@example.com', 'Yoga'),
 	('porky.pig@example.com', 'Deadlifting');
 
 -- Achievement table
@@ -72,7 +72,7 @@ VALUES
     ('sylvester.cat@example.com', 'Swimming', '2024-03-10', '12:00', 3);
 
 -- Personal Bookings table
-INSERT INTO Personal_bookings (session_id, mem_email)
+INSERT INTO Personal_bookings (mem_email, session_id)
 VALUES
     ('bugs.bunny@example.com', 1),
     ('daffy.duck@example.com', 2),
@@ -84,6 +84,7 @@ VALUES
     ('elmer.fudd@example.com', 'Cardio', '2024-03-01', '13:00', 1),
     ('tweety.bird@example.com', 'Weight training', '2024-03-05', '12:00', 2),
     ('sylvester.cat@example.com', 'Deadlifting', '2024-03-10', '20:00', 2);
+	('elmer.fudd@example.com', 'Mobility', '2024-03-01', '10:00', 1),
 
 -- Admin Staff table
 INSERT INTO Admin_staff (email, first_name, last_name)
