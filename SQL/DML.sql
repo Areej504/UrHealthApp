@@ -83,8 +83,8 @@ INSERT INTO Personal_sessions (trainer_email, routine, session_date, session_tim
 VALUES
     ('elmer.fudd@example.com', 'Cardio', '2024-03-01', '13:00', 1),
     ('tweety.bird@example.com', 'Weight training', '2024-03-05', '12:00', 2),
-    ('sylvester.cat@example.com', 'Deadlifting', '2024-03-10', '20:00', 2);
-	('elmer.fudd@example.com', 'Mobility', '2024-03-01', '10:00', 1),
+    ('sylvester.cat@example.com', 'Deadlifting', '2024-03-10', '20:00', 2),
+	('elmer.fudd@example.com', 'Mobility', '2024-03-01', '10:00', 1);
 
 -- Admin Staff table
 INSERT INTO Admin_staff (email, first_name, last_name)
